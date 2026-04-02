@@ -1,1 +1,1554 @@
-html
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- SEO Meta Tags -->
+  <title>Fotograf Zenica | Fotografisanje Vjenčanja – Profesionalne Usluge</title>
+  <meta name="description" content="Profesionalni fotograf u Zenici specijaliziran za fotografisanje vjenčanja. Rezervišite termin, pregledajte portfelj i kontaktirajte nas danas. Usluge slikanja za posebne trenutke." />
+  <meta name="keywords" content="fotograf zenica, slikanje vjencanja, fotografisanje vjencanja, fotograf vjencanja, usluge fotografisanja, usluge slikanja, vjencanje zenica, fotograf bosna, profesionalni fotograf" />
+  <meta name="author" content="Fotograf Zenica" />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://fotografzenica.github.io/usluge" />
+
+  <!-- Open Graph / Social -->
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://fotografzenica.github.io/usluge" />
+  <meta property="og:title" content="Fotograf Zenica | Fotografisanje Vjenčanja" />
+  <meta property="og:description" content="Profesionalni fotograf u Zenici specijaliziran za fotografisanje vjenčanja. Posebni trenuci zaslužuju posebne slike." />
+  <meta property="og:image" content="https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?w=1200" />
+
+  <!-- Schema.org structured data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Fotograf Zenica",
+    "description": "Profesionalni fotograf u Zenici specijaliziran za fotografisanje vjenčanja i posebnih događaja.",
+    "url": "https://fotografzenica.github.io/usluge",
+    "telephone": "+387-XX-XXX-XXX",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Zenica",
+      "addressCountry": "BA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 44.2025,
+      "longitude": 17.9079
+    },
+    "openingHours": "Mo-Su 09:00-21:00",
+    "priceRange": "€€",
+    "image": "https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg",
+    "sameAs": []
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white: #ffffff;
+      --off-white: #fafafa;
+      --light-gray: #f4f4f4;
+      --border: #e8e8e8;
+      --text-dark: #111111;
+      --text-mid: #444444;
+      --text-light: #888888;
+      --accent: #1a1a1a;
+      --accent-hover: #333;
+      --gold: #c9a84c;
+      --gold-light: #f0e6c8;
+      --success: #2d7a4f;
+      --error: #c0392b;
+      --shadow-sm: 0 1px 4px rgba(0,0,0,0.08);
+      --shadow-md: 0 4px 20px rgba(0,0,0,0.10);
+      --shadow-lg: 0 8px 40px rgba(0,0,0,0.13);
+      --radius: 4px;
+      --transition: 0.22s ease;
+    }
+
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Georgia', 'Times New Roman', serif;
+      background: var(--white);
+      color: var(--text-dark);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* ─── UTILITIES ─── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .section { padding: 80px 0; }
+    .section-alt { background: var(--off-white); }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.4rem);
+      font-weight: normal;
+      letter-spacing: -0.02em;
+      margin-bottom: 12px;
+      color: var(--text-dark);
+    }
+    .section-sub {
+      color: var(--text-light);
+      font-size: 1rem;
+      margin-bottom: 48px;
+      font-style: italic;
+    }
+    .divider {
+      width: 40px; height: 2px;
+      background: var(--gold);
+      margin: 16px 0 32px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 14px 32px;
+      font-size: 0.95rem;
+      font-family: inherit;
+      cursor: pointer;
+      border: none;
+      border-radius: var(--radius);
+      transition: var(--transition);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .btn-dark {
+      background: var(--accent);
+      color: #fff;
+    }
+    .btn-dark:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: var(--shadow-md); }
+    .btn-outline {
+      background: transparent;
+      color: var(--accent);
+      border: 1.5px solid var(--accent);
+    }
+    .btn-outline:hover { background: var(--accent); color: #fff; }
+    .btn-gold {
+      background: var(--gold);
+      color: #fff;
+    }
+    .btn-gold:hover { background: #b8953e; transform: translateY(-1px); box-shadow: var(--shadow-md); }
+
+    /* ─── HEADER / NAV ─── */
+    header {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      background: rgba(255,255,255,0.97);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+      transition: box-shadow var(--transition);
+    }
+    header.scrolled { box-shadow: var(--shadow-sm); }
+    nav {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 68px;
+    }
+    .nav-logo {
+      font-size: 1.25rem;
+      font-weight: normal;
+      letter-spacing: 0.06em;
+      text-decoration: none;
+      color: var(--text-dark);
+      text-transform: uppercase;
+    }
+    .nav-logo span { color: var(--gold); }
+    .nav-links {
+      display: flex; gap: 32px; list-style: none;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      letter-spacing: 0.04em;
+      transition: color var(--transition);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .nav-links a:hover { color: var(--text-dark); }
+    .nav-links .nav-cta {
+      background: var(--accent);
+      color: #fff;
+      padding: 9px 20px;
+      border-radius: var(--radius);
+    }
+    .nav-links .nav-cta:hover { background: var(--accent-hover); }
+    .hamburger {
+      display: none;
+      flex-direction: column; gap: 5px;
+      background: none; border: none; cursor: pointer; padding: 4px;
+    }
+    .hamburger span { display: block; width: 24px; height: 2px; background: var(--text-dark); transition: var(--transition); }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed; top: 68px; left: 0; right: 0;
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      z-index: 999;
+      padding: 20px 24px;
+      flex-direction: column; gap: 16px;
+    }
+    .mobile-nav.open { display: flex; }
+    .mobile-nav a {
+      text-decoration: none; color: var(--text-dark);
+      font-size: 1rem; padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      margin-top: 68px;
+      position: relative;
+      min-height: 92vh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0;
+      background-image: url('https://images.pexels.com/photos/1444442/pexels-photo-1444442.jpeg?auto=compress&cs=tinysrgb&w=1400');
+      background-size: cover; background-position: center 30%;
+      filter: brightness(0.45);
+      transform: scale(1.03);
+      transition: transform 8s ease;
+    }
+    .hero-bg.loaded { transform: scale(1); }
+    .hero-content {
+      position: relative; z-index: 2;
+      color: #fff;
+      max-width: 680px;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--gold);
+      color: #fff;
+      font-size: 0.78rem;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      padding: 6px 14px;
+      border-radius: 2px;
+      margin-bottom: 20px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4.2rem);
+      font-weight: normal;
+      line-height: 1.15;
+      margin-bottom: 20px;
+      letter-spacing: -0.02em;
+    }
+    .hero h1 em { font-style: italic; color: var(--gold-light); }
+    .hero p {
+      font-size: clamp(1rem, 1.8vw, 1.15rem);
+      opacity: 0.88;
+      max-width: 520px;
+      margin-bottom: 36px;
+      font-style: italic;
+    }
+    .hero-buttons { display: flex; gap: 14px; flex-wrap: wrap; }
+    .hero-stats {
+      position: absolute; bottom: 32px; left: 0; right: 0; z-index: 2;
+      display: flex; gap: 0;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,0.1);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 16px 32px;
+      color: #fff;
+      text-align: center;
+    }
+    .hero-stat-num { font-size: 1.8rem; font-weight: normal; display: block; }
+    .hero-stat-label { font-size: 0.8rem; opacity: 0.75; font-family: 'Helvetica Neue', Arial, sans-serif; letter-spacing: 0.06em; }
+
+    /* ─── TRUST BAR ─── */
+    .trust-bar {
+      background: var(--accent);
+      color: #fff;
+      padding: 18px 0;
+    }
+    .trust-bar-inner {
+      display: flex; align-items: center; justify-content: center;
+      gap: 40px; flex-wrap: wrap;
+    }
+    .trust-item {
+      display: flex; align-items: center; gap: 10px;
+      font-size: 0.88rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      opacity: 0.92;
+      letter-spacing: 0.02em;
+    }
+    .trust-item svg { flex-shrink: 0; }
+
+    /* ─── WHY ME ─── */
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+    .why-card {
+      border: 1px solid var(--border);
+      padding: 32px;
+      border-radius: var(--radius);
+      background: #fff;
+      transition: box-shadow var(--transition), transform var(--transition);
+    }
+    .why-card:hover { box-shadow: var(--shadow-md); transform: translateY(-3px); }
+    .why-card-icon {
+      width: 48px; height: 48px;
+      background: var(--gold-light);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 20px;
+    }
+    .why-card h3 {
+      font-size: 1.1rem; font-weight: normal;
+      margin-bottom: 10px; letter-spacing: -0.01em;
+    }
+    .why-card p { color: var(--text-mid); font-size: 0.95rem; line-height: 1.65; }
+
+    /* ─── GALLERY ─── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: auto;
+      gap: 10px;
+    }
+    .gallery-item {
+      overflow: hidden; border-radius: var(--radius);
+      position: relative; cursor: pointer;
+      background: var(--light-gray);
+    }
+    .gallery-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+    .gallery-item:nth-child(5) { grid-column: span 2; }
+    .gallery-item img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+      aspect-ratio: auto;
+      min-height: 220px;
+    }
+    .gallery-item:nth-child(1) img { min-height: 460px; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-item-overlay {
+      position: absolute; inset: 0;
+      background: rgba(0,0,0,0);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .gallery-item:hover .gallery-item-overlay { background: rgba(0,0,0,0.25); }
+    .gallery-item-overlay span {
+      color: #fff; font-size: 1.8rem;
+      opacity: 0; transition: opacity var(--transition);
+    }
+    .gallery-item:hover .gallery-item-overlay span { opacity: 1; }
+
+    /* ─── PACKAGES / PRICES ─── */
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+      align-items: start;
+    }
+    .package-card {
+      border: 1.5px solid var(--border);
+      border-radius: var(--radius);
+      padding: 36px 32px;
+      background: #fff;
+      transition: box-shadow var(--transition), transform var(--transition);
+      position: relative;
+    }
+    .package-card:hover { box-shadow: var(--shadow-lg); transform: translateY(-4px); }
+    .package-card.featured {
+      border-color: var(--gold);
+      box-shadow: var(--shadow-md);
+    }
+    .package-badge {
+      position: absolute; top: -13px; left: 50%; transform: translateX(-50%);
+      background: var(--gold); color: #fff;
+      font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 4px 16px; border-radius: 20px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      white-space: nowrap;
+    }
+    .package-name {
+      font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em;
+      color: var(--text-light); margin-bottom: 10px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .package-price {
+      font-size: 2.4rem; font-weight: normal; line-height: 1;
+      margin-bottom: 4px;
+    }
+    .package-price span { font-size: 1rem; color: var(--text-light); }
+    .package-desc {
+      font-size: 0.9rem; color: var(--text-mid); margin-bottom: 24px;
+      font-style: italic;
+    }
+    .package-features {
+      list-style: none; margin-bottom: 32px;
+    }
+    .package-features li {
+      padding: 8px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 0.92rem;
+      color: var(--text-mid);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .package-features li:last-child { border-bottom: none; }
+    .feature-check { color: var(--gold); font-size: 1rem; }
+
+    /* ─── AVAILABILITY ─── */
+    .availability-wrapper {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;
+    }
+    .calendar {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .cal-header {
+      background: var(--accent); color: #fff;
+      padding: 16px 20px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .cal-header h3 { font-size: 0.95rem; font-weight: 400; letter-spacing: 0.04em; }
+    .cal-nav { background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; padding: 4px 8px; }
+    .cal-nav:hover { opacity: 0.7; }
+    .cal-days-header {
+      display: grid; grid-template-columns: repeat(7, 1fr);
+      background: var(--light-gray);
+    }
+    .cal-days-header span {
+      text-align: center; padding: 10px 4px;
+      font-size: 0.75rem; color: var(--text-light); letter-spacing: 0.04em;
+    }
+    .cal-grid { display: grid; grid-template-columns: repeat(7, 1fr); }
+    .cal-day {
+      aspect-ratio: 1;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.85rem; cursor: default;
+      position: relative;
+      transition: background var(--transition);
+    }
+    .cal-day.empty { }
+    .cal-day.available { cursor: pointer; }
+    .cal-day.available:hover { background: var(--gold-light); }
+    .cal-day.booked {
+      color: var(--text-light);
+      text-decoration: line-through;
+    }
+    .cal-day.booked::after {
+      content: '';
+      position: absolute; bottom: 5px; left: 50%; transform: translateX(-50%);
+      width: 5px; height: 5px; border-radius: 50%;
+      background: #e55; 
+    }
+    .cal-day.today { font-weight: bold; }
+    .cal-day.selected { background: var(--accent); color: #fff; border-radius: 50%; }
+    .cal-legend {
+      padding: 12px 20px;
+      display: flex; gap: 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.8rem; color: var(--text-mid);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .legend-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      display: inline-block; margin-right: 5px; vertical-align: middle;
+    }
+    .dot-free { background: var(--gold); }
+    .dot-booked { background: #e55; }
+
+    .avail-info h3 { font-size: 1.3rem; font-weight: normal; margin-bottom: 12px; }
+    .avail-info p { color: var(--text-mid); margin-bottom: 24px; font-style: italic; }
+    .avail-note {
+      background: var(--gold-light); border-left: 3px solid var(--gold);
+      padding: 14px 18px; margin-bottom: 24px;
+      font-size: 0.9rem; color: var(--text-dark);
+    }
+    .avail-form input, .avail-form select, .avail-form textarea {
+      width: 100%; padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      font-family: inherit; font-size: 0.95rem;
+      margin-bottom: 12px;
+      transition: border-color var(--transition);
+      background: #fff; color: var(--text-dark);
+    }
+    .avail-form input:focus, .avail-form select:focus, .avail-form textarea:focus {
+      outline: none; border-color: var(--gold);
+    }
+    .selected-date-display {
+      font-size: 0.85rem; color: var(--gold);
+      margin-bottom: 12px; font-style: italic;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    .testimonials-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .testimonial-card {
+      border: 1px solid var(--border);
+      padding: 28px;
+      border-radius: var(--radius);
+      background: #fff;
+      position: relative;
+    }
+    .quote-mark {
+      font-size: 4rem; color: var(--gold-light); line-height: 1;
+      position: absolute; top: 16px; left: 24px;
+      font-family: Georgia, serif;
+    }
+    .testimonial-text {
+      font-size: 0.95rem; line-height: 1.7;
+      color: var(--text-mid); margin-bottom: 20px;
+      margin-top: 20px; font-style: italic;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .author-avatar {
+      width: 44px; height: 44px; border-radius: 50%;
+      object-fit: cover; background: var(--light-gray);
+    }
+    .author-name { font-size: 0.92rem; font-weight: normal; }
+    .author-date { font-size: 0.8rem; color: var(--text-light); font-style: italic; }
+    .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 4px; }
+
+    /* ─── PROCESS ─── */
+    .process-steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute; top: 28px; left: 10%; right: 10%;
+      height: 1px; background: var(--border); z-index: 0;
+    }
+    .process-step {
+      text-align: center; padding: 0 20px;
+      position: relative; z-index: 1;
+    }
+    .step-num {
+      width: 56px; height: 56px;
+      border: 1.5px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 20px;
+      font-size: 1.1rem; color: var(--gold);
+      background: #fff;
+    }
+    .step-title { font-size: 1rem; margin-bottom: 8px; font-weight: normal; }
+    .step-desc { font-size: 0.88rem; color: var(--text-mid); font-style: italic; }
+
+    /* ─── LIVE CHAT ─── */
+    .chat-bubble {
+      position: fixed; bottom: 28px; right: 28px; z-index: 2000;
+    }
+    .chat-btn {
+      width: 60px; height: 60px;
+      background: var(--accent);
+      border-radius: 50%;
+      border: none; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-lg);
+      transition: transform var(--transition), background var(--transition);
+    }
+    .chat-btn:hover { transform: scale(1.08); background: var(--accent-hover); }
+    .chat-dot {
+      position: absolute; top: 3px; right: 3px;
+      width: 12px; height: 12px;
+      background: #2ecc71; border-radius: 50%;
+      border: 2px solid #fff;
+      animation: pulse-dot 2s infinite;
+    }
+    @keyframes pulse-dot {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+    }
+    .chat-window {
+      position: absolute; bottom: 72px; right: 0;
+      width: 320px;
+      background: #fff;
+      border-radius: 12px;
+      box-shadow: var(--shadow-lg);
+      border: 1px solid var(--border);
+      display: none;
+      flex-direction: column;
+      overflow: hidden;
+      transform: translateY(10px); opacity: 0;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    .chat-window.open {
+      display: flex;
+      transform: translateY(0); opacity: 1;
+    }
+    .chat-win-header {
+      background: var(--accent); color: #fff;
+      padding: 16px 18px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .chat-avatar {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--gold); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem;
+    }
+    .chat-win-title { font-size: 0.92rem; }
+    .chat-win-status { font-size: 0.75rem; opacity: 0.75; }
+    .chat-win-close { margin-left: auto; background: none; border: none; color: #fff; font-size: 1.2rem; cursor: pointer; }
+    .chat-messages {
+      flex: 1; padding: 16px;
+      min-height: 200px; max-height: 260px;
+      overflow-y: auto;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    .chat-msg {
+      max-width: 85%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 0.88rem; line-height: 1.5;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .chat-msg.bot { background: var(--light-gray); align-self: flex-start; border-bottom-left-radius: 2px; }
+    .chat-msg.user { background: var(--accent); color: #fff; align-self: flex-end; border-bottom-right-radius: 2px; }
+    .chat-quick-replies {
+      display: flex; flex-wrap: wrap; gap: 6px;
+      padding: 0 16px 10px;
+    }
+    .quick-reply {
+      font-size: 0.78rem; padding: 5px 10px;
+      border: 1px solid var(--border); border-radius: 20px;
+      background: none; cursor: pointer;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      transition: background var(--transition);
+      color: var(--text-dark);
+    }
+    .quick-reply:hover { background: var(--light-gray); }
+    .chat-input-row {
+      display: flex; border-top: 1px solid var(--border);
+      padding: 10px 12px; gap: 8px;
+    }
+    .chat-input {
+      flex: 1; border: 1px solid var(--border); border-radius: 20px;
+      padding: 8px 14px; font-size: 0.88rem;
+      font-family: inherit; outline: none;
+    }
+    .chat-input:focus { border-color: var(--gold); }
+    .chat-send {
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 50%;
+      width: 34px; height: 34px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition);
+    }
+    .chat-send:hover { background: var(--accent-hover); }
+
+    /* ─── CONTACT ─── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1.2fr; gap: 60px; align-items: start;
+    }
+    .contact-info h3 { font-size: 1.3rem; font-weight: normal; margin-bottom: 20px; }
+    .contact-detail {
+      display: flex; align-items: flex-start; gap: 14px;
+      margin-bottom: 18px;
+    }
+    .contact-icon {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--light-gray);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .contact-detail-text a { color: var(--text-dark); text-decoration: none; }
+    .contact-detail-text a:hover { color: var(--gold); }
+    .contact-detail-label { font-size: 0.78rem; color: var(--text-light); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 2px; font-family: 'Helvetica Neue', Arial, sans-serif; }
+    .contact-form input, .contact-form select, .contact-form textarea {
+      width: 100%; padding: 13px 16px;
+      border: 1px solid var(--border); border-radius: var(--radius);
+      font-family: inherit; font-size: 0.95rem;
+      margin-bottom: 14px;
+      transition: border-color var(--transition);
+      background: #fff; color: var(--text-dark);
+    }
+    .contact-form input:focus, .contact-form select:focus, .contact-form textarea:focus {
+      outline: none; border-color: var(--gold);
+    }
+    .contact-form .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .form-success {
+      background: #e8f5ee; border: 1px solid #a8d5b5;
+      color: var(--success); padding: 14px 18px;
+      border-radius: var(--radius); font-size: 0.9rem;
+      display: none; margin-top: 8px;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--accent); color: rgba(255,255,255,0.85);
+      padding: 56px 0 24px;
+    }
+    .footer-grid {
+      display: grid; grid-template-columns: 1.5fr 1fr 1fr;
+      gap: 40px; margin-bottom: 40px;
+    }
+    .footer-brand h3 {
+      font-size: 1.2rem; font-weight: normal;
+      color: #fff; margin-bottom: 12px; letter-spacing: 0.06em; text-transform: uppercase;
+    }
+    .footer-brand p { font-size: 0.88rem; line-height: 1.7; font-style: italic; }
+    .footer-col h4 {
+      font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.12em;
+      color: rgba(255,255,255,0.5); margin-bottom: 16px;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .footer-col a {
+      display: block; color: rgba(255,255,255,0.75);
+      text-decoration: none; font-size: 0.88rem;
+      margin-bottom: 8px; transition: color var(--transition);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .footer-col a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.1);
+      padding-top: 20px;
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 0.82rem; color: rgba(255,255,255,0.4);
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .footer-bottom a { color: rgba(255,255,255,0.4); text-decoration: none; }
+
+    /* ─── LIGHTBOX ─── */
+    .lightbox {
+      position: fixed; inset: 0; z-index: 3000;
+      background: rgba(0,0,0,0.92);
+      display: none; align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img { max-width: 90vw; max-height: 88vh; border-radius: 3px; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 24px;
+      background: none; border: none; color: #fff;
+      font-size: 2rem; cursor: pointer; opacity: 0.7;
+    }
+    .lightbox-close:hover { opacity: 1; }
+
+    /* ─── SCROLL ANIMATION ─── */
+    .fade-in {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ─── STICKY CTA BANNER (mobile) ─── */
+    .sticky-cta {
+      display: none;
+      position: fixed; bottom: 0; left: 0; right: 0;
+      z-index: 1500;
+      background: var(--accent);
+      color: #fff;
+      padding: 14px 20px;
+      text-align: center;
+      font-size: 0.92rem;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+    .sticky-cta a { color: var(--gold-light); text-decoration: none; font-weight: bold; }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 900px) {
+      .gallery-grid { grid-template-columns: 1fr 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 2; }
+      .gallery-item:nth-child(5) { grid-column: span 1; }
+      .availability-wrapper { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 680px) {
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .hero { min-height: 80vh; }
+      .hero-stats { flex-wrap: wrap; }
+      .hero-stat { flex: 1; min-width: 120px; }
+      .gallery-grid { grid-template-columns: 1fr; }
+      .gallery-item:nth-child(1) { grid-column: span 1; }
+      .gallery-item:nth-child(5) { grid-column: span 1; }
+      .contact-form .form-row { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; gap: 8px; text-align: center; }
+      .sticky-cta { display: block; }
+      .chat-bubble { bottom: 70px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ─── HEADER ─── -->
+<header id="main-header">
+  <nav class="container">
+    <a href="#" class="nav-logo">Foto<span>Zenica</span></a>
+    <ul class="nav-links">
+      <li><a href="#o-meni">O meni</a></li>
+      <li><a href="#portfolio">Portfolio</a></li>
+      <li><a href="#cijene">Cijene</a></li>
+      <li><a href="#dostupnost">Dostupnost</a></li>
+      <li><a href="#kontakt" class="nav-cta">Rezerviši termin</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Meni">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+</header>
+
+<div class="mobile-nav" id="mobile-nav">
+  <a href="#o-meni" onclick="closeMobileNav()">O meni</a>
+  <a href="#portfolio" onclick="closeMobileNav()">Portfolio</a>
+  <a href="#cijene" onclick="closeMobileNav()">Cijene</a>
+  <a href="#dostupnost" onclick="closeMobileNav()">Dostupnost</a>
+  <a href="#recenzije" onclick="closeMobileNav()">Recenzije</a>
+  <a href="#kontakt" onclick="closeMobileNav()">Kontakt</a>
+</div>
+
+<!-- ─── HERO ─── -->
+<section class="hero" id="pocetna">
+  <div class="hero-bg" id="hero-bg"></div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-tag">📍 Zenica, Bosna i Hercegovina</div>
+      <h1>Vaše vjenčanje.<br><em>Zauvijek zapamćeno.</em></h1>
+      <p>Svaki pogled, svaki osmijeh, svaki trenutak – pretočen u sliku koja priča vašu priču. Profesionalno fotografisanje vjenčanja i posebnih događaja u Zenici i okolini.</p>
+      <div class="hero-buttons">
+        <a href="#kontakt" class="btn btn-gold">Rezerviši termin</a>
+        <a href="#portfolio" class="btn btn-outline" style="color:#fff; border-color:rgba(255,255,255,0.6)">Pogledaj radove</a>
+      </div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">200+</span>
+        <span class="hero-stat-label">Vjenčanja</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">8</span>
+        <span class="hero-stat-label">Godina iskustva</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">100%</span>
+        <span class="hero-stat-label">Zadovoljnih parova</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">48h</span>
+        <span class="hero-stat-label">Isporuka snimaka</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TRUST BAR ─── -->
+<div class="trust-bar">
+  <div class="container">
+    <div class="trust-bar-inner">
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Besplatne konsultacije
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Fotografije u roku 48 sati
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Dostupan vikendom i praznicima
+      </div>
+      <div class="trust-item">
+        <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        Putujemo po cijeloj BiH
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ─── O MENI ─── -->
+<section class="section" id="o-meni">
+  <div class="container">
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center;">
+      <div class="fade-in">
+        <p class="section-title" style="font-size:0.82rem; text-transform:uppercase; letter-spacing:0.12em; color:var(--text-light); margin-bottom:8px; font-family:'Helvetica Neue',Arial,sans-serif;">O fotografu</p>
+        <h2 class="section-title" style="margin-bottom:0;">Bilježim trenutke koji ostaju zauvijek</h2>
+        <div class="divider"></div>
+        <p style="color:var(--text-mid); margin-bottom:18px; font-style:italic;">Fotografisanje vjenčanja nije samo posao – to je privilegija biti prisutan u jednom od najvažnijih dana vašeg života.</p>
+        <p style="color:var(--text-mid); margin-bottom:18px;">Sa više od 8 godina iskustva u Zenici i okolini, naučio sam da svako vjenčanje ima svoju dušu. Moj pristup je diskretan ali pažljiv – ne namećem se, ali ne propuštam nijedan važan trenutak.</p>
+        <p style="color:var(--text-mid); margin-bottom:28px;">Koristim profesionalnu Sony i Canon opremu sa rezervnom opremom za svaki slučaj. Svaki bračni par dobija online galeriju sa 400–800 editovanih fotografija visoke rezolucije.</p>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <a href="#portfolio" class="btn btn-dark">Pogledaj portfolio</a>
+          <a href="#kontakt" class="btn btn-outline">Kontaktiraj me</a>
+        </div>
+      </div>
+      <div class="fade-in" style="position:relative;">
+        <img src="https://images.pexels.com/photos/3014856/pexels-photo-3014856.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Profesionalni fotograf Zenica vjenčanje" style="width:100%; border-radius:var(--radius); display:block; aspect-ratio:4/5; object-fit:cover;" loading="lazy" />
+        <div style="position:absolute; bottom:-20px; left:-20px; background:var(--gold); color:#fff; padding:20px 24px; border-radius:var(--radius); box-shadow:var(--shadow-md);">
+          <div style="font-size:2rem; line-height:1;">8+</div>
+          <div style="font-size:0.78rem; letter-spacing:0.06em; opacity:0.9; font-family:'Helvetica Neue',Arial,sans-serif;">GODINA ISKUSTVA</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── ZAŠTO JA ─── -->
+<section class="section section-alt" id="prednosti">
+  <div class="container">
+    <div class="fade-in" style="text-align:center; max-width:600px; margin:0 auto 48px;">
+      <h2 class="section-title">Zašto odabrati mene?</h2>
+      <div class="divider" style="margin:16px auto 0;"></div>
+      <p class="section-sub" style="margin-top:12px;">U moru fotografa, evo šta vas čini razlika</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-card fade-in">
+        <div class="why-card-icon">
+          <svg width="22" height="22" fill="none" stroke="#c9a84c" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 4.93a10 10 0 0 0 0 14.14"/></svg>
+        </div>
+        <h3>Dostava za 48 sati</h3>
+        <p>Ne čekate sedmicama. Prvih 50 editovanih fotografija šaljem unutar 48 sati od vjenčanja – za objavu na društvenim mrežama.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-card-icon">
+          <svg width="22" height="22" fill="none" stroke="#c9a84c" stroke-width="2" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <h3>Backup garancija</h3>
+        <p>Svaka fotografija se snima na dvije SD kartice simultano. Sigurnost vaših uspomena je apsolutni prioritet.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-card-icon">
+          <svg width="22" height="22" fill="none" stroke="#c9a84c" stroke-width="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        </div>
+        <h3>Diskretni pristup</h3>
+        <p>Radim nevidljivo – ne ometam tok vjenčanja, a bilježim sve važne trenutke prirodno i spontano.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-card-icon">
+          <svg width="22" height="22" fill="none" stroke="#c9a84c" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+        </div>
+        <h3>Neograničen broj fotografija</h3>
+        <p>Ne postavljam limit. Snimam sve što vrijedi snimiti i isporučujem kompletno editovanu galeriju.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-card-icon">
+          <svg width="22" height="22" fill="none" stroke="#c9a84c" stroke-width="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Predvjenčano snimanje</h3>
+        <p>Uključeno u sve pakete – savršeno da se upoznamo i da se osjećate opušteno pred kameru na veliki dan.</p>
+      </div>
+      <div class="why-card fade-in">
+        <div class="why-card-icon">
+          <svg width="22" height="22" fill="none" stroke="#c9a84c" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <h3>Fleksibilno radno vrijeme</h3>
+        <p>Dostupan vikendom, praznicima, ujutro i uveče. Prilagođavam se vašem programu vjenčanja bez dodatnih troškova.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PORTFOLIO ─── -->
+<section class="section" id="portfolio">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:48px;">
+      <h2 class="section-title">Portfolio</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Odabrani radovi sa vjenčanja u Zenici i okolini</p>
+    </div>
+    <div class="gallery-grid">
+      <div class="gallery-item fade-in" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/1024993/pexels-photo-1024993.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Fotografisanje vjencanja Zenica – mlada i mladoženja" loading="lazy" />
+        <div class="gallery-item-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/931177/pexels-photo-931177.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fotografisanje vjencanja Bosna – ceremonija" loading="lazy" />
+        <div class="gallery-item-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/1415131/pexels-photo-1415131.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fotograf vjencanja Zenica – buket" loading="lazy" />
+        <div class="gallery-item-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/265856/pexels-photo-265856.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fotograf Zenica – detalji vjenčanja" loading="lazy" />
+        <div class="gallery-item-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/1128318/pexels-photo-1128318.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Slikanje vjencanja Zenica – par" loading="lazy" />
+        <div class="gallery-item-overlay"><span>+</span></div>
+      </div>
+      <div class="gallery-item fade-in" onclick="openLightbox(this)">
+        <img src="https://images.pexels.com/photos/169198/pexels-photo-169198.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Usluge fotografisanja vjencanja BiH" loading="lazy" />
+        <div class="gallery-item-overlay"><span>+</span></div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:36px;" class="fade-in">
+      <a href="#kontakt" class="btn btn-outline">Zatražite kompletan portfolio →</a>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PAKETI / CIJENE ─── -->
+<section class="section section-alt" id="cijene">
+  <div class="container">
+    <div class="fade-in" style="text-align:center; max-width:580px; margin:0 auto 48px;">
+      <h2 class="section-title">Paketi i cijene</h2>
+      <div class="divider" style="margin:16px auto 0;"></div>
+      <p class="section-sub" style="margin-top:12px;">Transparentne cijene bez skrivenih troškova</p>
+    </div>
+    <div class="packages-grid">
+
+      <!-- Paket 1 -->
+      <div class="package-card fade-in">
+        <div class="package-name">Esencijalni</div>
+        <div class="package-price">400 <span>KM</span></div>
+        <div class="package-desc">Savršen za manja vjenčanja i skromnija slavlja</div>
+        <ul class="package-features">
+          <li><span class="feature-check">✦</span> 4 sata fotografisanja</li>
+          <li><span class="feature-check">✦</span> 200+ editovanih fotografija</li>
+          <li><span class="feature-check">✦</span> Online galerija 12 mjeseci</li>
+          <li><span class="feature-check">✦</span> Preuzimanje u punoj rezoluciji</li>
+          <li><span class="feature-check">✦</span> 1 fotograf</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-outline" style="width:100%; text-align:center; display:block;">Rezerviši →</a>
+      </div>
+
+      <!-- Paket 2 (Featured) -->
+      <div class="package-card featured fade-in">
+        <div class="package-badge">Najpopularniji</div>
+        <div class="package-name">Standard</div>
+        <div class="package-price">700 <span>KM</span></div>
+        <div class="package-desc">Idealan za prosječno vjenčanje – cijeli dan pokriven</div>
+        <ul class="package-features">
+          <li><span class="feature-check">✦</span> 8 sati fotografisanja</li>
+          <li><span class="feature-check">✦</span> 500+ editovanih fotografija</li>
+          <li><span class="feature-check">✦</span> Online galerija 24 mjeseca</li>
+          <li><span class="feature-check">✦</span> Predvjenčano snimanje (1h)</li>
+          <li><span class="feature-check">✦</span> Isporuka 48h (prvih 50 slika)</li>
+          <li><span class="feature-check">✦</span> USB sa fotografijama</li>
+          <li><span class="feature-check">✦</span> 1 fotograf + asistent</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-gold" style="width:100%; text-align:center; display:block;">Rezerviši →</a>
+      </div>
+
+      <!-- Paket 3 -->
+      <div class="package-card fade-in">
+        <div class="package-name">Premium</div>
+        <div class="package-price">1200 <span>KM</span></div>
+        <div class="package-desc">Za parove koji žele potpuno iskustvo bez kompromisa</div>
+        <ul class="package-features">
+          <li><span class="feature-check">✦</span> 12 sati fotografisanja</li>
+          <li><span class="feature-check">✦</span> 800+ editovanih fotografija</li>
+          <li><span class="feature-check">✦</span> Online galerija neograničeno</li>
+          <li><span class="feature-check">✦</span> Predvjenčano snimanje (2h)</li>
+          <li><span class="feature-check">✦</span> Fotoalbum 30x30 (30 stranica)</li>
+          <li><span class="feature-check">✦</span> Isporuka 48h (prvih 50 slika)</li>
+          <li><span class="feature-check">✦</span> Video highlights (3 min)</li>
+          <li><span class="feature-check">✦</span> 2 fotografa</li>
+        </ul>
+        <a href="#kontakt" class="btn btn-dark" style="width:100%; text-align:center; display:block;">Rezerviši →</a>
+      </div>
+    </div>
+
+    <div class="fade-in" style="text-align:center; margin-top:32px; color:var(--text-light); font-size:0.88rem; font-style:italic;">
+      * Sve cijene su iskazane u KM i uključuju PDV. Za lokacije van Zenice (do 50 km) nema dodatnog troška. Za dalje destinacije dogovorite individualno.
+    </div>
+  </div>
+</section>
+
+<!-- ─── PROCES ─── -->
+<section class="section" id="proces">
+  <div class="container">
+    <div class="fade-in" style="text-align:center; max-width:580px; margin:0 auto 56px;">
+      <h2 class="section-title">Kako teče saradnja</h2>
+      <div class="divider" style="margin:16px auto 0;"></div>
+    </div>
+    <div class="process-steps">
+      <div class="process-step fade-in">
+        <div class="step-num">01</div>
+        <div class="step-title">Kontakt i konsultacija</div>
+        <p class="step-desc">Javite se putem forme ili chata. Besplatan razgovor o vašim željama i viziji vjenčanja.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">02</div>
+        <div class="step-title">Rezervacija termina</div>
+        <p class="step-desc">Potpisujemo ugovor i uplaćujete mali avans koji osigurava vaš datum u kalendaru.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">03</div>
+        <div class="step-title">Predvjenčano snimanje</div>
+        <p class="step-desc">Upoznamo se bolje i vi se naviknete na kameru. Najvažniji korak za prirodne fotografije.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">04</div>
+        <div class="step-title">Dan vjenčanja</div>
+        <p class="step-desc">Dolazim ranije, pratim svaki trenutak diskretno i profesionalno od jutra do kasnih sati.</p>
+      </div>
+      <div class="process-step fade-in">
+        <div class="step-num">05</div>
+        <div class="step-title">Isporuka galerije</div>
+        <p class="step-desc">Prva selekcija za 48h. Kompletna editovana galerija za 3–4 sedmice na privatnom linku.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── DOSTUPNOST ─── -->
+<section class="section section-alt" id="dostupnost">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:48px;">
+      <h2 class="section-title">Provjeri dostupnost</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Provjeri slobodne termine i rezerviši odmah</p>
+    </div>
+    <div class="availability-wrapper">
+      <div class="fade-in">
+        <div class="calendar">
+          <div class="cal-header">
+            <button class="cal-nav" id="cal-prev">&#8249;</button>
+            <h3 id="cal-month-label"></h3>
+            <button class="cal-nav" id="cal-next">&#8250;</button>
+          </div>
+          <div class="cal-days-header">
+            <span>Ned</span><span>Pon</span><span>Uto</span><span>Sri</span><span>Čet</span><span>Pet</span><span>Sub</span>
+          </div>
+          <div class="cal-grid" id="cal-grid"></div>
+          <div class="cal-legend">
+            <span><span class="legend-dot dot-free"></span>Slobodan</span>
+            <span><span class="legend-dot dot-booked"></span>Zauzet</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="avail-info fade-in">
+        <h3>Brza rezervacija</h3>
+        <p>Odaberite datum u kalendaru i popunite kratku formu. Odgovor u roku od 2 sata.</p>
+        <div class="avail-note">
+          ⚡ Vikendi za 2025/2026 se brzo popunjavaju. Preporučujemo rezervaciju najmanje 6 mjeseci unaprijed.
+        </div>
+        <div class="selected-date-display" id="selected-date-text">Niste odabrali datum →</div>
+        <div class="avail-form">
+          <input type="text" id="avail-name" placeholder="Vaše ime i prezime" />
+          <input type="email" id="avail-email" placeholder="Email adresa" />
+          <input type="tel" id="avail-phone" placeholder="Broj telefona / WhatsApp" />
+          <select id="avail-package">
+            <option value="">-- Odaberite paket --</option>
+            <option>Esencijalni (400 KM)</option>
+            <option>Standard (700 KM)</option>
+            <option>Premium (1200 KM)</option>
+            <option>Nisam siguran/na</option>
+          </select>
+          <button class="btn btn-dark" style="width:100%;" onclick="submitAvailability()">Pošalji upit →</button>
+        </div>
+        <div class="form-success" id="avail-success">
+          ✅ Upit je primljen! Javit ću se u roku od 2 sata.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── RECENZIJE ─── -->
+<section class="section" id="recenzije">
+  <div class="container">
+    <div class="fade-in" style="text-align:center; max-width:580px; margin:0 auto 48px;">
+      <h2 class="section-title">Šta kažu parovi</h2>
+      <div class="divider" style="margin:16px auto 0;"></div>
+      <p class="section-sub" style="margin-top:12px;">Stvarna iskustva vjenčanih parova iz Zenice</p>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card fade-in">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Nismo mogli zamisliti bolje. Fotografije su toliko prirodne i emotivne – svaka slika priča priču. Isporuka za 48 sati je bila nevjerovatna, odmah smo mogli podijeliti sa rodbinom.</p>
+        <div class="testimonial-author">
+          <img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100" class="author-avatar" alt="Amra H." loading="lazy" />
+          <div>
+            <div class="author-name">Amra & Edin H.</div>
+            <div class="author-date">Vjenčanje u Zenici, juni 2024.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Jako profesionalan, diskretan i nenametljiv tokom cijelog vjenčanja. Bili smo opušteni i to se vidi na fotografijama. Preporučujem svim paovima u Zenici i šire!</p>
+        <div class="testimonial-author">
+          <img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" class="author-avatar" alt="Lejla K." loading="lazy" />
+          <div>
+            <div class="author-name">Lejla & Mirza K.</div>
+            <div class="author-date">Vjenčanje u Kaknju, august 2024.</div>
+          </div>
+        </div>
+      </div>
+      <div class="testimonial-card fade-in">
+        <div class="quote-mark">"</div>
+        <div class="stars">★★★★★</div>
+        <p class="testimonial-text">Predvjenčano snimanje je bila izvrsna ideja. Navikli smo se na kameru i na dan vjenčanja smo se osjećali totalno opušteno. Album je rekord kod nas doma – svi ga gledaju!</p>
+        <div class="testimonial-author">
+          <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" class="author-avatar" alt="Sara B." loading="lazy" />
+          <div>
+            <div class="author-name">Sara & Adnan B.</div>
+            <div class="author-date">Vjenčanje u Zenici, maj 2024.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Google rating badge -->
+    <div class="fade-in" style="text-align:center; margin-top:40px;">
+      <div style="display:inline-flex; align-items:center; gap:12px; background:var(--light-gray); padding:16px 28px; border-radius:40px; border:1px solid var(--border);">
+        <svg width="24" height="24" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        <div>
+          <div style="font-size:1.1rem; color:var(--text-dark);">5.0 ★★★★★</div>
+          <div style="font-size:0.78rem; color:var(--text-light); font-family:'Helvetica Neue',Arial,sans-serif;">48 Google recenzija</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── KONTAKT ─── -->
+<section class="section section-alt" id="kontakt">
+  <div class="container">
+    <div class="fade-in" style="margin-bottom:48px;">
+      <h2 class="section-title">Kontaktirajte me</h2>
+      <div class="divider"></div>
+      <p class="section-sub">Besplatne konsultacije · Odgovor u roku 2 sata</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info fade-in">
+        <h3>Razgovarajmo o vašem vjenčanju</h3>
+        <p style="color:var(--text-mid); font-style:italic; margin-bottom:28px;">Svako vjenčanje je posebno. Volim čuti o vašoj priči, planovima i željama kako bih mogao ponuditi ono što vam treba.</p>
+        
+        <div class="contact-detail">
+          <div class="contact-icon">📞</div>
+          <div class="contact-detail-text">
+            <div class="contact-detail-label">Telefon / WhatsApp</div>
+            <a href="tel:+38761000000">+387 61 000 000</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">✉️</div>
+          <div class="contact-detail-text">
+            <div class="contact-detail-label">Email</div>
+            <a href="mailto:info@fotografzenica.ba">info@fotografzenica.ba</a>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">📍</div>
+          <div class="contact-detail-text">
+            <div class="contact-detail-label">Lokacija</div>
+            <span style="color:var(--text-mid);">Zenica, Federacija BiH</span>
+          </div>
+        </div>
+        <div class="contact-detail">
+          <div class="contact-icon">🕐</div>
+          <div class="contact-detail-text">
+            <div class="contact-detail-label">Radno vrijeme</div>
+            <span style="color:var(--text-mid);">Svaki dan 09:00 – 21:00</span>
+          </div>
+        </div>
+
+        <div style="margin-top:28px; padding:20px; background:#fff; border-radius:var(--radius); border:1px solid var(--border);">
+          <p style="font-size:0.9rem; color:var(--text-mid); margin-bottom:12px; font-style:italic;">Pratite moj rad na:</p>
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a href="#" style="background:var(--accent); color:#fff; padding:8px 18px; border-radius:var(--radius); text-decoration:none; font-size:0.85rem; font-family:'Helvetica Neue',Arial,sans-serif;">📷 Instagram</a>
+            <a href="#" style="background:#1877f2; color:#fff; padding:8px 18px; border-radius:var(--radius); text-decoration:none; font-size:0.85rem; font-family:'Helvetica Neue',Arial,sans-serif;">Facebook</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="fade-in">
+        <div style="background:#fff; padding:36px; border-radius:var(--radius); border:1px solid var(--border); box-shadow:var(--shadow-sm);">
+          <h3 style="font-size:1.1rem; font-weight:normal; margin-bottom:24px;">Pošaljite upit</h3>
+          <div class="contact-form">
+            <div class="form-row">
+              <input type="text" id="cf-name" placeholder="Ime i prezime *" />
+              <input type="tel" id="cf-phone" placeholder="Broj telefona *" />
+            </div>
+            <input type="email" id="cf-email" placeholder="Email adresa *" />
+            <input type="date" id="cf-date" title="Datum vjenčanja" />
+            <select id="cf-package">
+              <option value="">-- Odaberite paket --</option>
+              <option>Esencijalni (400 KM)</option>
+              <option>Standard (700 KM)</option>
+              <option>Premium (1200 KM)</option>
+              <option>Nisam siguran/na – trebam savjet</option>
+            </select>
+            <select id="cf-location">
+              <option value="">-- Lokacija vjenčanja --</option>
+              <option>Zenica</option>
+              <option>Sarajevo</option>
+              <option>Kakanj</option>
+              <option>Visoko</option>
+              <option>Tešanj</option>
+              <option>Žepče</option>
+              <option>Maglaj</option>
+              <option>Zavidovići</option>
+              <option>Druga lokacija</option>
+            </select>
+            <textarea id="cf-message" rows="4" placeholder="Recite mi nešto o vašem vjenčanju – stil, broj gostiju, posebne želje..."></textarea>
+            <button class="btn btn-dark" style="width:100%; font-size:1rem; padding:16px;" onclick="submitContact()">Pošalji upit →</button>
+          </div>
+          <div class="form-success" id="contact-success">
+            ✅ Hvala! Primio sam vaš upit i javit ću se u roku od 2 sata.
+          </div>
+          <p style="text-align:center; font-size:0.8rem; color:var(--text-light); margin-top:12px; font-style:italic;">Vaši podaci su sigurni i neće biti dijeljeni trećim stranama.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <h3>FotoZenica</h3>
+        <p>Profesionalno fotografisanje vjenčanja i posebnih događaja u Zenici i Bosni i Hercegovini. Vaši najljepši trenuci zaslužuju vječnost.</p>
+        <p style="margin-top:12px; color:rgba(255,255,255,0.4); font-size:0.8rem;">📍 Zenica, Federacija BiH</p>
+      </div>
+      <div class="footer-col">
+        <h4>Usluge</h4>
+        <a href="#portfolio">Fotografisanje vjenčanja</a>
+        <a href="#portfolio">Predvjenčano snimanje</a>
+        <a href="#portfolio">Portret fotografija</a>
+        <a href="#portfolio">Krstine i krštenja</a>
+        <a href="#cijene">Cijene paketa</a>
+      </div>
+      <div class="footer-col">
+        <h4>Informacije</h4>
+        <a href="#o-meni">O meni</a>
+        <a href="#dostupnost">Dostupnost</a>
+        <a href="#recenzije">Recenzije</a>
+        <a href="#kontakt">Kontakt</a>
+        <a href="mailto:info@fotografzenica.ba">info@fotografzenica.ba</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2025 FotoZenica · Sva prava zadržana</span>
+      <span>Napravljeno za parove u Zenici i BiH · <a href="#pocetna">Nazad na vrh ↑</a></span>
+    </div>
+  </div>
+</footer>
+
+<!-- ─── STICKY MOBILE CTA ─── -->
+<div class="sticky-cta">
+  <a href="tel:+38761000000">📞 Pozovi odmah</a> &nbsp;|&nbsp; <a href="#kontakt">Rezerviši termin</a>
+</div>
+
+<!-- ─── LIGHTBOX ─── -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+  <img class="lightbox-img" id="lightbox-img" src="" alt="Fotografija vjenčanja Zenica" />
+</div>
+
+<!-- ─── LIVE CHAT ─── -->
+<div class="chat-bubble">
+  <button class="chat-btn" id="chat-btn" onclick="toggleChat()" aria-label="Otvori chat">
+    <svg id="chat-icon-open" width="26" height="26" fill="none" stroke="#fff" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    <svg id="chat-icon-close" width="22" height="22" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24" style="display:none;"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    <div class="chat-dot"></div>
+  </button>
+  <div class="chat-window" id="chat-window">
+    <div class="chat-win-header">
+      <div class="chat-avatar">📷</div>
+      <div>
+        <div class="chat-win-title">Fotograf Zenica</div>
+        <div class="chat-win-status">🟢 Online · Odgovor za ~2 min</div>
+      </div>
+      <button class="chat-win-close" onclick="toggleChat()">✕</button>
+    </div>
+    <div class="chat-messages" id="chat-messages">
+      <div class="chat-msg bot">Zdravo! 👋 Ja sam vaš fotograf. Kako vam mogu pomoći? Slobodno pitajte o cijenama, dostupnosti ili pošaljite upit za vjenčanje.</div>
+    </div>
+    <div class="chat-quick-replies" id="quick-replies">
+      <button class="quick-reply" onclick="sendQuick('Kakve su vaše cijene?')">💰 Cijene</button>
+      <button class="quick-reply" onclick="sendQuick('Jeste li dostupni za moj datum?')">📅 Dostupnost</button>
+      <button class="quick-reply" onclick="sendQuick('Kako mogu rezervisati termin?')">✅ Rezervacija</button>
+      <button class="quick-reply" onclick="sendQuick('Koliko brzo isporučujete fotografije?')">⚡ Isporuka</button>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" class="chat-input" id="chat-input" placeholder="Napišite poruku..." onkeypress="chatKeyPress(event)" />
+      <button class="chat-send" onclick="sendChatMessage()">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ─── JAVASCRIPT ─── -->
+<script>
+// ─ Header scroll effect
+window.addEventListener('scroll', () => {
+  document.getElementById('main-header').classList.toggle('scrolled', window.scrollY > 30);
+});
+
+// ─ Hero bg load animation
+window.addEventListener('load', () => {
+  document.getElementById('hero-bg').classList.add('loaded');
+});
+
+// ─ Mobile nav
+document.getElementById('hamburger').addEventListener('click', () => {
+  document.getElementById('mobile-nav').classList.toggle('open');
+});
+function closeMobileNav() {
+  document.getElementById('mobile-nav').classList.remove('open');
+}
+
+// ─ Scroll fade-in
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); } });
+}, { threshold: 0.12 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ─ Calendar
+const BOOKED_DAYS = [5, 12, 19, 26, 3, 8, 14, 22]; // sample booked
+let calDate = new Date();
+let selectedDate = null;
+const monthNames = ['Januar','Februar','Mart','April','Maj','Juni','Juli','August','Septembar','Oktobar','Novembar','Decembar'];
+
+function renderCalendar() {
+  const y = calDate.getFullYear(), m = calDate.getMonth();
+  document.getElementById('cal-month-label').textContent = `${monthNames[m]} ${y}`;
+  const grid = document.getElementById('cal-grid');
+  grid.innerHTML = '';
+  const firstDay = new Date(y, m, 1).getDay();
+  const daysInMonth = new Date(y, m + 1, 0).getDate();
+  const today = new Date();
+
+  for (let i = 0; i < firstDay; i++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day empty';
+    grid.appendChild(el);
+  }
+  for (let d = 1; d <= daysInMonth; d++) {
+    const el = document.createElement('div');
+    const isBooked = BOOKED_DAYS.includes(d) && m % 2 === 0;
+    const isToday = d === today.getDate() && m === today.getMonth() && y === today.getFullYear();
+    const isSel = selectedDate && selectedDate.getDate() === d && selectedDate.getMonth() === m && selectedDate.getFullYear() === y;
+    el.className = 'cal-day' + (isBooked ? ' booked' : ' available') + (isToday ? ' today' : '') + (isSel ? ' selected' : '');
+    el.textContent = d;
+    if (!isBooked) {
+      el.onclick = () => {
+        selectedDate = new Date(y, m, d);
+        document.getElementById('selected-date-text').textContent = `Odabrani datum: ${d}. ${monthNames[m]} ${y}.`;
+        renderCalendar();
+      };
+    }
+    grid.appendChild(el);
+  }
+}
+document.getElementById('cal-prev').onclick = () => { calDate.setMonth(calDate.getMonth() - 1); renderCalendar(); };
+document.getElementById('cal-next').onclick = () => { calDate.setMonth(calDate.getMonth() + 1); renderCalendar(); };
+renderCalendar();
+
+// ─ Availability form
+function submitAvailability() {
+  const name = document.getElementById('avail-name').value.trim();
+  const email = document.getElementById('avail-email').value.trim();
+  const phone = document.getElementById('avail-phone').value.trim();
+  if (!name || !email || !phone) { alert('Molimo popunite sva obavezna polja.'); return; }
+  document.getElementById('avail-success').style.display = 'block';
+}
+
+// ─ Contact form
+function submitContact() {
+  const name = document.getElementById('cf-name').value.trim();
+  const phone = document.getElementById('cf-phone').value.trim();
+  const email = document.getElementById('cf-email').value.trim();
+  if (!name || !phone || !email) { alert('Molimo popunite sva obavezna polja.'); return; }
+  document.getElementById('contact-success').style.display = 'block';
+}
+
+// ─ Lightbox
+function openLightbox(el) {
+  const img = el.querySelector('img');
+  document.getElementById('lightbox-img').src = img.src.replace('w=600','w=1200').replace('w=800','w=1200');
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLightbox(); });
+
+// ─ Chat
+const chatResponses = {
+  'cijene': 'Nudim 3 paketa:\n• Esencijalni – 400 KM (4h, 200+ foto)\n• Standard – 700 KM (8h, 500+ foto)\n• Premium – 1200 KM (12h, 800+ foto + album)\n\nSvi paketi uključuju editovane fotografije i online galeriju.',
+  'dostupnost': 'Provjerite kalendar na stranici za tačnu dostupnost. Vikendi za 2025/2026 se brzo popunjavaju! Kontaktirajte me direktno za vaš datum.',
+  'rezervacija': 'Rezervacija je jednostavna:\n1. Odaberite datum i paket\n2. Popunite formu za kontakt\n3. Potpisujemo ugovor i mali avans osigurava vaš datum.\n\nOdgovaram u roku 2 sata! 😊',
+  'isporuka': 'Prvih 50 editovanih fotografija šaljem u roku 48 sati – savršeno za Instagram! 📸\n\nKompletan editovani set (400–800 fotografija) isporučujem za 3–4 sedmice.',
+  'default': 'Hvala na pitanju! Za sve detalje slobodno me kontaktirajte direktno:\n📞 +387 61 000 000\n✉️ info@fotografzenica.ba\n\nIli popunite kontakt formu na stranici. 😊'
+};
+
+function getChatResponse(msg) {
+  const m = msg.toLowerCase();
+  if (m.includes('cijena') || m.includes('cijena') || m.includes('košta') || m.includes('km') || m.includes('paket')) return chatResponses['cijene'];
+  if (m.includes('dostup') || m.includes('datum') || m.includes('slobod') || m.includes('termin')) return chatResponses['dostupnost'];
+  if (m.includes('rezerv') || m.includes('booking') || m.includes('ugovor')) return chatResponses['rezervacija'];
+  if (m.includes('isporuč') || m.includes('kada') || m.includes('brzo') || m.includes('48')) return chatResponses['isporuka'];
+  return chatResponses['default'];
+}
+
+let chatOpen = false;
+function toggleChat() {
+  chatOpen = !chatOpen;
+  const win = document.getElementById('chat-window');
+  const iconOpen = document.getElementById('chat-icon-open');
+  const iconClose = document.getElementById('chat-icon-close');
+  if (chatOpen) {
+    win.style.display = 'flex';
+    setTimeout(() => win.classList.add('open'), 10);
+    iconOpen.style.display = 'none';
+    iconClose.style.display = 'block';
+  } else {
+    win.classList.remove('open');
+    iconOpen.style.display = 'block';
+    iconClose.style.display = 'none';
+    setTimeout(() => { win.style.display = 'none'; }, 250);
+  }
+}
+
+function sendQuick(text) {
+  document.getElementById('chat-input').value = text;
+  sendChatMessage();
+}
+
+function sendChatMessage() {
+  const input = document.getElementById('chat-input');
+  const msg = input.value.trim();
+  if (!msg) return;
+  const msgs = document.getElementById('chat-messages');
+  msgs.innerHTML += `<div class="chat-msg user">${msg}</div>`;
+  input.value = '';
+  document.getElementById('quick-replies').style.display = 'none';
+  msgs.scrollTop = msgs.scrollHeight;
+  setTimeout(() => {
+    msgs.innerHTML += `<div class="chat-msg bot">${getChatResponse(msg).replace(/\n/g,'<br>')}</div>`;
+    msgs.scrollTop = msgs.scrollHeight;
+  }, 700);
+}
+
+function chatKeyPress(e) {
+  if (e.key === 'Enter') sendChatMessage();
+}
+
+// ─ Smooth date field label
+document.getElementById('cf-date').addEventListener('focus', function() {
+  if (!this.value) this.type = 'date';
+});
+</script>
+</body>
+</html>
