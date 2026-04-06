@@ -1,647 +1,1056 @@
 <!DOCTYPE html>
 <html lang="bs">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+<title>FotoZenica | Fotografisanje Vjenčanja</title>
+<meta name="description" content="Profesionalni fotograf u Zenici specijaliziran za fotografisanje vjenčanja. Svaki trenutak, zauvijek."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&family=DM+Sans:wght@300;400&family=Cormorant:ital,wght@0,300;1,300;1,400&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --cream:#f7f3ec;
+  --cream2:#ede8df;
+  --parchment:#e8e1d4;
+  --sage:#8a9e84;
+  --sage-light:#b8c9b3;
+  --sage-dark:#5a7055;
+  --rose:#c4907a;
+  --rose-light:#ddb8a8;
+  --rose-pale:#f2e8e3;
+  --ink:#2a2520;
+  --ink2:#4a4038;
+  --ink3:#7a6f65;
+  --serif:'Playfair Display',Georgia,serif;
+  --display:'Cormorant',Georgia,serif;
+  --sans:'DM Sans',sans-serif;
+}
+body{
+  background:var(--cream);
+  color:var(--ink);
+  font-family:var(--sans);
+  font-weight:300;
+  overflow-x:hidden;
+}
 
-  <title>Fotograf Zenica | Fotografisanje Vjenčanja – Profesionalne Usluge</title>
-  <meta name="description" content="Profesionalni fotograf u Zenici specijaliziran za fotografisanje vjenčanja, rodjendana, portreta i prirode. Rezervišite termin, pregledajte portfelj i kontaktirajte nas danas." />
-  <meta name="keywords" content="fotograf zenica, slikanje vjencanja, fotografisanje vjencanja, fotograf vjencanja, usluge fotografisanja, usluge slikanja, vjencanje zenica, fotograf bosna, profesionalni fotograf, rodjendani zenica, portreti zenica" />
-  <meta name="author" content="Fotograf Zenica" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://fotografzenica.github.io/usluge" />
-  <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://fotografzenica.github.io/usluge" />
-  <meta property="og:title" content="Fotograf Zenica | Fotografisanje Vjenčanja" />
-  <meta property="og:description" content="Profesionalni fotograf u Zenici. Vjenčanja, rodjendani, portreti, pejzaži. Posebni trenuci zaslužuju posebne slike." />
-  <meta property="og:image" content="https://images.pexels.com/photos/25182720/pexels-photo-25182720.jpeg?w=1200" />
+/* ---- CUSTOM CURSOR ---- */
+.cur{position:fixed;z-index:9999;pointer-events:none}
+.cur-c{
+  width:12px;height:12px;border-radius:50%;
+  background:var(--rose);
+  position:fixed;transform:translate(-50%,-50%);
+  transition:transform .15s,width .3s,height .3s;
+}
+.cur-r{
+  width:36px;height:36px;border-radius:50%;
+  border:1px solid var(--rose);
+  position:fixed;transform:translate(-50%,-50%);
+  transition:all .22s cubic-bezier(.25,.46,.45,.94);
+  opacity:.6;
+}
+.cur-r.big{width:60px;height:60px;opacity:.25}
 
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"LocalBusiness","name":"Fotograf Zenica","description":"Profesionalni fotograf u Zenici specijaliziran za fotografisanje vjenčanja i posebnih događaja.","url":"https://fotografzenica.github.io/usluge","telephone":"+387-61-000-000","address":{"@type":"PostalAddress","addressLocality":"Zenica","addressCountry":"BA"},"geo":{"@type":"GeoCoordinates","latitude":44.2025,"longitude":17.9079},"openingHours":"Mo-Su 09:00-21:00","priceRange":"€€","image":"https://images.pexels.com/photos/25182720/pexels-photo-25182720.jpeg"}
-  </script>
+/* ---- NAV ---- */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:800;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:24px 48px;
+  transition:all .4s;
+}
+nav.solid{
+  background:rgba(247,243,236,.97);
+  backdrop-filter:blur(10px);
+  padding:16px 48px;
+  border-bottom:1px solid var(--parchment);
+}
+.logo{
+  font-family:var(--serif);font-size:1.1rem;font-weight:400;letter-spacing:.06em;
+  text-decoration:none;color:var(--ink);
+}
+.logo em{font-style:italic;color:var(--rose)}
+.nav-ul{display:flex;list-style:none;gap:32px;align-items:center}
+.nav-ul a{
+  font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink3);
+  transition:color .25s;
+}
+.nav-ul a:hover{color:var(--ink)}
+.nav-ul .cta{
+  background:var(--ink);color:var(--cream) !important;
+  padding:10px 24px;letter-spacing:.1em !important;
+  transition:background .25s !important;
+}
+.nav-ul .cta:hover{background:var(--ink2) !important}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--ink);border-radius:2px;transition:.3s}
+.mob-nav{
+  display:none;position:fixed;inset:0;z-index:799;
+  background:var(--cream);flex-direction:column;
+  align-items:center;justify-content:center;gap:28px;
+}
+.mob-nav.on{display:flex}
+.mob-nav a{
+  font-family:var(--serif);font-size:2rem;font-weight:400;font-style:italic;
+  text-decoration:none;color:var(--ink);opacity:.6;transition:.2s;
+}
+.mob-nav a:hover{opacity:1;color:var(--rose)}
 
-  <style>
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    :root{
-      --white:#ffffff;--off:#fafafa;--lg:#f4f4f4;--border:#e8e8e8;
-      --td:#111;--tm:#444;--tl:#888;
-      --accent:#1a1a1a;--gold:#c9a84c;--gl:#f0e6c8;
-      --success:#2d7a4f;
-      --s1:0 1px 4px rgba(0,0,0,.08);--s2:0 4px 20px rgba(0,0,0,.10);--s3:0 8px 40px rgba(0,0,0,.13);
-      --r:4px;--tr:.22s ease
-    }
-    html{scroll-behavior:smooth}
-    body{font-family:Georgia,'Times New Roman',serif;background:#fff;color:var(--td);line-height:1.7;overflow-x:hidden}
-    .container{max-width:1100px;margin:0 auto;padding:0 24px}
-    .section{padding:80px 0}
-    .section-alt{background:var(--off)}
-    .stitle{font-size:clamp(1.6rem,3vw,2.4rem);font-weight:normal;letter-spacing:-.02em;margin-bottom:12px}
-    .ssub{color:var(--tl);font-size:1rem;margin-bottom:48px;font-style:italic}
-    .div{width:40px;height:2px;background:var(--gold);margin:16px 0 32px}
-    .btn{display:inline-block;padding:14px 32px;font-size:.95rem;font-family:inherit;cursor:pointer;border:none;border-radius:var(--r);transition:var(--tr);text-decoration:none;letter-spacing:.04em}
-    .btn-dk{background:var(--accent);color:#fff}
-    .btn-dk:hover{background:#333;transform:translateY(-1px);box-shadow:var(--s2)}
-    .btn-ol{background:transparent;color:var(--accent);border:1.5px solid var(--accent)}
-    .btn-ol:hover{background:var(--accent);color:#fff}
-    .btn-gd{background:var(--gold);color:#fff}
-    .btn-gd:hover{background:#b8953e;transform:translateY(-1px);box-shadow:var(--s2)}
+/* ---- HERO ---- */
+.hero{
+  min-height:100svh;display:grid;
+  grid-template-columns:1fr 1fr;
+  margin-top:0;
+}
+.hero-left{
+  display:flex;flex-direction:column;justify-content:flex-end;
+  padding:0 52px 72px;
+  background:var(--cream);
+  position:relative;
+}
+.hero-left::after{
+  content:'FotoZenica';
+  position:absolute;
+  top:50%;left:-60px;transform:translateY(-50%) rotate(-90deg);
+  font-family:var(--sans);font-size:.6rem;letter-spacing:.4em;text-transform:uppercase;
+  color:var(--ink3);opacity:.35;
+  white-space:nowrap;
+}
+.hero-eyebrow{
+  display:flex;align-items:center;gap:16px;
+  font-size:.67rem;letter-spacing:.25em;text-transform:uppercase;color:var(--rose);
+  margin-bottom:28px;
+}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--rose)}
+.hero h1{
+  font-family:var(--serif);
+  font-size:clamp(3rem,6vw,5.5rem);
+  font-weight:400;line-height:1.05;
+  letter-spacing:-.01em;
+  margin-bottom:24px;
+}
+.hero h1 em{font-style:italic;color:var(--rose)}
+.hero-desc{
+  max-width:360px;
+  font-size:.93rem;line-height:1.9;color:var(--ink3);
+  margin-bottom:44px;
+}
+.hero-actions{display:flex;gap:16px;align-items:center}
+.btn-fill{
+  display:inline-block;padding:14px 36px;
+  background:var(--ink);color:var(--cream);
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;transition:all .3s;
+}
+.btn-fill:hover{background:var(--sage-dark)}
+.btn-line{
+  display:inline-block;
+  font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;color:var(--ink);
+  border-bottom:1px solid var(--ink3);padding-bottom:2px;
+  transition:all .3s;
+}
+.btn-line:hover{color:var(--rose);border-color:var(--rose)}
+.hero-right{
+  position:relative;overflow:hidden;
+}
+.hero-right img{
+  width:100%;height:100%;object-fit:cover;
+  display:block;
+  filter:saturate(.85);
+}
+.hero-stats{
+  position:absolute;bottom:0;left:0;right:0;
+  display:flex;
+  background:rgba(42,37,32,.75);
+  backdrop-filter:blur(6px);
+}
+.hero-stat{
+  flex:1;padding:20px 18px;
+  border-right:1px solid rgba(247,243,236,.1);
+  text-align:center;
+}
+.hero-stat:last-child{border:none}
+.stat-n{
+  display:block;font-family:var(--serif);font-size:2rem;font-weight:400;
+  color:var(--cream);line-height:1;
+}
+.stat-l{
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  color:rgba(247,243,236,.45);margin-top:4px;display:block;
+}
+.hero-film{
+  position:absolute;top:32px;right:24px;
+  background:var(--rose-pale);border:1px solid var(--rose-light);
+  padding:14px 18px;
+}
+.hero-film span{
+  display:block;font-family:var(--serif);font-size:.78rem;font-style:italic;
+  color:var(--rose);
+}
 
-    /* NAV */
-    header{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(255,255,255,.97);border-bottom:1px solid var(--border);backdrop-filter:blur(8px);transition:box-shadow var(--tr)}
-    header.scrolled{box-shadow:var(--s1)}
-    nav{display:flex;align-items:center;justify-content:space-between;height:68px}
-    .logo{font-size:1.25rem;font-weight:normal;letter-spacing:.06em;text-decoration:none;color:var(--td);text-transform:uppercase}
-    .logo span{color:var(--gold)}
-    .nl{display:flex;gap:26px;list-style:none;align-items:center}
-    .nl a{text-decoration:none;color:var(--tm);font-size:.87rem;letter-spacing:.04em;transition:color var(--tr);font-family:'Helvetica Neue',Arial,sans-serif}
-    .nl a:hover{color:var(--td)}
-    .nl .ncta{background:var(--accent);color:#fff;padding:9px 20px;border-radius:var(--r)}
-    .nl .ncta:hover{background:#333}
-    .hbg{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:4px}
-    .hbg span{display:block;width:24px;height:2px;background:var(--td)}
-    .mnav{display:none;position:fixed;top:68px;left:0;right:0;background:#fff;border-bottom:1px solid var(--border);z-index:999;padding:20px 24px;flex-direction:column;gap:0}
-    .mnav.open{display:flex}
-    .mnav a{text-decoration:none;color:var(--td);font-size:1rem;padding:12px 0;border-bottom:1px solid var(--border);font-family:'Helvetica Neue',Arial,sans-serif}
+/* ---- TRUST BAR ---- */
+.trust{
+  background:var(--sage);
+  padding:16px 48px;
+  display:flex;align-items:center;justify-content:center;gap:44px;flex-wrap:wrap;
+}
+.trust-it{
+  font-size:.67rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(247,243,236,.9);display:flex;align-items:center;gap:10px;
+}
+.trust-it svg{opacity:.7}
 
-    /* HERO */
-    .hero{margin-top:68px;position:relative;min-height:94vh;display:flex;align-items:center;overflow:hidden}
-    .hbg-img{position:absolute;inset:0;background-image:url('https://images.pexels.com/photos/25182720/pexels-photo-25182720.jpeg?auto=compress&cs=tinysrgb&w=1600');background-size:cover;background-position:center 35%;filter:brightness(.42);transform:scale(1.04);transition:transform 9s ease}
-    .hbg-img.loaded{transform:scale(1)}
-    .hc{position:relative;z-index:2;color:#fff;max-width:680px}
-    .htag{display:inline-block;background:var(--gold);color:#fff;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;padding:6px 14px;border-radius:2px;margin-bottom:22px;font-family:'Helvetica Neue',Arial,sans-serif}
-    .hero h1{font-size:clamp(2.4rem,5.5vw,4.2rem);font-weight:normal;line-height:1.13;margin-bottom:20px;letter-spacing:-.02em}
-    .hero h1 em{font-style:italic;color:var(--gl)}
-    .hero>div>p{font-size:clamp(1rem,1.8vw,1.15rem);opacity:.88;max-width:520px;margin-bottom:36px;font-style:italic}
-    .hbtns{display:flex;gap:14px;flex-wrap:wrap}
-    .hstats{position:absolute;bottom:0;left:0;right:0;z-index:2;display:flex}
-    .hstat{flex:1;background:rgba(0,0,0,.55);backdrop-filter:blur(6px);border-right:1px solid rgba(255,255,255,.1);padding:18px 12px;color:#fff;text-align:center}
-    .hstat:last-child{border-right:none}
-    .hstat-n{font-size:1.9rem;display:block}
-    .hstat-l{font-size:.73rem;opacity:.72;font-family:'Helvetica Neue',Arial,sans-serif;letter-spacing:.05em}
+/* ---- SECTIONS ---- */
+.section{padding:100px 48px}
+.s-label{
+  font-size:.62rem;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--rose);margin-bottom:16px;display:flex;align-items:center;gap:14px;
+}
+.s-label::before{content:'';width:28px;height:1px;background:var(--rose)}
+.s-title{
+  font-family:var(--serif);
+  font-size:clamp(2rem,4vw,3.8rem);
+  font-weight:400;line-height:1.1;margin-bottom:8px;
+}
+.s-title em{font-style:italic;color:var(--rose)}
+.s-rule{
+  width:48px;height:1.5px;background:var(--parchment);
+  margin:20px 0 44px;
+}
 
-    /* TRUST */
-    .trust{background:var(--accent);color:#fff;padding:18px 0}
-    .trust-i{display:flex;align-items:center;justify-content:center;gap:36px;flex-wrap:wrap}
-    .ti{display:flex;align-items:center;gap:9px;font-size:.86rem;font-family:'Helvetica Neue',Arial,sans-serif;opacity:.92}
+/* ---- ABOUT – MAGAZINE LAYOUT ---- */
+.about{background:var(--cream2);padding:0}
+.about-wrap{display:grid;grid-template-columns:5fr 4fr;min-height:92vh}
+.about-image-col{
+  position:relative;overflow:hidden;
+}
+.about-image-col img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  filter:saturate(.8) sepia(.08);
+}
+.about-pull{
+  position:absolute;bottom:52px;left:52px;right:52px;
+  font-family:var(--display);font-size:1.6rem;font-weight:300;font-style:italic;
+  color:var(--cream);line-height:1.45;
+  text-shadow:0 2px 20px rgba(42,37,32,.5);
+}
+.about-text-col{
+  padding:80px 60px;
+  display:flex;flex-direction:column;justify-content:center;
+  background:var(--cream2);
+}
+.about-text-col p{
+  color:var(--ink3);font-size:.95rem;line-height:1.9;margin-bottom:18px;
+}
+.about-text-col p strong{color:var(--ink);font-weight:400}
+.about-badge-row{
+  display:flex;gap:20px;margin:24px 0;flex-wrap:wrap;
+}
+.about-badge{
+  background:var(--parchment);padding:18px 22px;
+  border-left:3px solid var(--sage);
+}
+.about-badge strong{
+  display:block;font-family:var(--serif);font-size:2rem;font-weight:400;
+  color:var(--ink);line-height:1;
+}
+.about-badge span{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink3)}
 
-    /* WHY */
-    .why-g{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:26px}
-    .wc{border:1px solid var(--border);padding:28px;border-radius:var(--r);background:#fff;transition:box-shadow var(--tr),transform var(--tr)}
-    .wc:hover{box-shadow:var(--s2);transform:translateY(-3px)}
-    .wi{width:44px;height:44px;background:var(--gl);border-radius:50%;display:flex;align-items:center;justify-content:center;margin-bottom:16px;font-size:1.2rem}
-    .wc h3{font-size:1.05rem;font-weight:normal;margin-bottom:9px}
-    .wc p{color:var(--tm);font-size:.9rem;line-height:1.65}
+/* ---- WHY ---- */
+.why-section{background:var(--cream)}
+.why-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);
+  gap:1px;background:var(--parchment);
+  border:1px solid var(--parchment);
+  margin-top:48px;
+}
+.why-card{
+  background:var(--cream);padding:44px 36px;
+  position:relative;
+  transition:background .4s;
+}
+.why-card:hover{background:var(--rose-pale)}
+.why-icon{
+  width:48px;height:48px;margin-bottom:20px;
+  border-radius:50%;
+  background:var(--sage-light);
+  display:flex;align-items:center;justify-content:center;
+  opacity:.7;
+  font-size:1.1rem;
+}
+.why-card h3{
+  font-family:var(--serif);font-size:1.15rem;font-weight:400;
+  margin-bottom:12px;color:var(--ink);
+}
+.why-card p{font-size:.88rem;line-height:1.85;color:var(--ink3)}
 
-    /* PORTFOLIO TABS */
-    .ptabs{display:flex;border-bottom:2px solid var(--border);margin-bottom:36px;overflow-x:auto;-webkit-overflow-scrolling:touch}
-    .ptab{background:none;border:none;padding:12px 22px;font-family:'Helvetica Neue',Arial,sans-serif;font-size:.84rem;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;color:var(--tl);border-bottom:2px solid transparent;margin-bottom:-2px;transition:color var(--tr),border-color var(--tr);white-space:nowrap}
-    .ptab.active{color:var(--td);border-bottom-color:var(--gold)}
-    .ptab:hover{color:var(--td)}
-    .pgal{display:none;grid-template-columns:repeat(3,1fr);gap:10px}
-    .pgal.active{display:grid}
-    .gi{overflow:hidden;border-radius:var(--r);position:relative;cursor:pointer;background:var(--lg)}
-    .gi img{width:100%;height:260px;object-fit:cover;display:block;transition:transform .5s ease}
-    .gi:hover img{transform:scale(1.05)}
-    .gio{position:absolute;inset:0;background:rgba(0,0,0,0);display:flex;align-items:center;justify-content:center;transition:background var(--tr)}
-    .gi:hover .gio{background:rgba(0,0,0,.28)}
-    .gio span{color:#fff;font-size:1.8rem;opacity:0;transition:opacity var(--tr)}
-    .gi:hover .gio span{opacity:1}
-    .gi.tall img{height:390px}
-    .gi.wide{grid-column:span 2}
-    .gi.wide img{height:260px}
+/* ---- PORTFOLIO ---- */
+.portfolio-section{background:var(--ink);color:var(--cream);padding:80px 0 0}
+.port-header{
+  padding:0 48px 48px;
+  display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;
+}
+.port-header .s-title{color:var(--cream)}
+.port-header .s-label{color:var(--rose-light)}
+.port-header .s-label::before{background:var(--rose-light)}
+.port-tabs{display:flex;gap:0;border-bottom:1px solid rgba(247,243,236,.08)}
+.ptab{
+  background:none;border:none;cursor:pointer;
+  font-size:.67rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(247,243,236,.35);
+  padding:12px 22px;
+  border-bottom:1.5px solid transparent;margin-bottom:-1px;
+  transition:.25s;white-space:nowrap;
+  font-family:var(--sans);
+}
+.ptab.on{color:var(--rose-light);border-bottom-color:var(--rose-light)}
+.ptab:hover:not(.on){color:rgba(247,243,236,.65)}
 
-    /* PACKAGES */
-    .pkgs{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px;align-items:start}
-    .pkg{border:1.5px solid var(--border);border-radius:var(--r);padding:36px 30px;background:#fff;transition:box-shadow var(--tr),transform var(--tr);position:relative}
-    .pkg:hover{box-shadow:var(--s3);transform:translateY(-4px)}
-    .pkg.feat{border-color:var(--gold);box-shadow:var(--s2)}
-    .pbadge{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--gold);color:#fff;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;padding:4px 16px;border-radius:20px;font-family:'Helvetica Neue',Arial,sans-serif;white-space:nowrap}
-    .pname{font-size:.78rem;text-transform:uppercase;letter-spacing:.14em;color:var(--tl);margin-bottom:10px;font-family:'Helvetica Neue',Arial,sans-serif}
-    .pprice{font-size:2.5rem;font-weight:normal;line-height:1;margin-bottom:4px}
-    .pprice span{font-size:1rem;color:var(--tl)}
-    .pdesc{font-size:.88rem;color:var(--tm);margin-bottom:22px;font-style:italic}
-    .pf{list-style:none;margin-bottom:28px}
-    .pf li{padding:8px 0;border-bottom:1px solid var(--border);font-size:.9rem;color:var(--tm);display:flex;align-items:center;gap:10px}
-    .pf li:last-child{border-bottom:none}
-    .fc{color:var(--gold)}
+/* FILMSTRIP gallery */
+.filmstrip-wrap{
+  overflow-x:auto;padding:0 48px 0;
+  scrollbar-width:thin;scrollbar-color:rgba(196,144,122,.3) transparent;
+  cursor:grab;
+}
+.filmstrip-wrap:active{cursor:grabbing}
+.filmstrip-wrap::-webkit-scrollbar{height:2px}
+.filmstrip-wrap::-webkit-scrollbar-thumb{background:rgba(196,144,122,.35);border-radius:2px}
+.filmstrip{
+  display:none;gap:3px;
+  width:max-content;padding:0 0 48px;
+  position:relative;
+}
+.filmstrip.on{display:flex}
 
-    /* AVAILABILITY */
-    .aw{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
-    .cal{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;font-family:'Helvetica Neue',Arial,sans-serif}
-    .cal-h{background:var(--accent);color:#fff;padding:16px 20px;display:flex;justify-content:space-between;align-items:center}
-    .cal-h h3{font-size:.95rem;font-weight:400;letter-spacing:.04em}
-    .cal-nav{background:none;border:none;color:#fff;font-size:1.3rem;cursor:pointer;padding:4px 10px}
-    .cal-nav:hover{opacity:.7}
-    .cal-dh{display:grid;grid-template-columns:repeat(7,1fr);background:var(--lg)}
-    .cal-dh span{text-align:center;padding:10px 4px;font-size:.72rem;color:var(--tl);letter-spacing:.04em}
-    .cal-g{display:grid;grid-template-columns:repeat(7,1fr)}
-    .cd{aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:.83rem;cursor:default;position:relative;transition:background var(--tr)}
-    .cd.av{cursor:pointer}
-    .cd.av:hover{background:var(--gl)}
-    .cd.bk{color:var(--tl);text-decoration:line-through}
-    .cd.bk::after{content:'';position:absolute;bottom:5px;left:50%;transform:translateX(-50%);width:5px;height:5px;border-radius:50%;background:#e55}
-    .cd.today{font-weight:bold}
-    .cd.sel{background:var(--accent);color:#fff;border-radius:50%}
-    .cal-leg{padding:12px 20px;display:flex;gap:20px;border-top:1px solid var(--border);font-size:.8rem;color:var(--tm)}
-    .ld{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:5px;vertical-align:middle}
-    .ai h3{font-size:1.3rem;font-weight:normal;margin-bottom:12px}
-    .ai p{color:var(--tm);margin-bottom:18px;font-style:italic}
-    .anote{background:var(--gl);border-left:3px solid var(--gold);padding:14px 18px;margin-bottom:20px;font-size:.9rem}
-    .af input,.af select{width:100%;padding:12px 16px;border:1px solid var(--border);border-radius:var(--r);font-family:inherit;font-size:.95rem;margin-bottom:12px;transition:border-color var(--tr);background:#fff;color:var(--td)}
-    .af input:focus,.af select:focus{outline:none;border-color:var(--gold)}
-    .sdt{font-size:.84rem;color:var(--gold);margin-bottom:14px;font-style:italic;font-family:'Helvetica Neue',Arial,sans-serif}
+/* film perf dots */
+.perf-strip{
+  position:sticky;left:0;
+  display:flex;align-items:center;padding:0 12px;
+  gap:0;
+  background:var(--ink);
+  z-index:10;
+}
+.perf-col{display:flex;flex-direction:column;gap:22px;padding:8px 6px}
+.perf-hole{width:10px;height:16px;background:rgba(247,243,236,.08);border-radius:3px}
 
-    /* TESTIMONIALS */
-    .tg{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:24px}
-    .tc{border:1px solid var(--border);padding:28px;border-radius:var(--r);background:#fff;position:relative}
-    .qm{font-size:4rem;color:var(--gl);line-height:1;position:absolute;top:14px;left:22px;font-family:Georgia,serif}
-    .tt{font-size:.93rem;line-height:1.7;color:var(--tm);margin-bottom:18px;margin-top:22px;font-style:italic}
-    .ta{display:flex;align-items:center;gap:14px}
-    .tav{width:44px;height:44px;border-radius:50%;object-fit:cover;background:var(--lg)}
-    .tn{font-size:.9rem}
-    .td2{font-size:.78rem;color:var(--tl);font-style:italic}
-    .stars{color:var(--gold);font-size:.84rem;margin-bottom:4px}
+.film-item{
+  position:relative;overflow:hidden;flex-shrink:0;cursor:pointer;
+  background:#1a1714;
+}
+.film-item img{
+  display:block;height:480px;object-fit:cover;
+  filter:saturate(.75);
+  transition:transform .6s ease,filter .4s;
+}
+.film-item:hover img{transform:scale(1.04);filter:saturate(.9)}
+.film-item.p img{width:320px}
+.film-item.l img{width:700px}
+.film-item.s img{width:480px}
+.film-item-cap{
+  position:absolute;bottom:0;left:0;right:0;
+  padding:24px 20px 16px;
+  background:linear-gradient(transparent,rgba(26,23,20,.8));
+  opacity:0;transition:.35s;
+}
+.film-item:hover .film-item-cap{opacity:1}
+.film-item-cap span{
+  font-size:.6rem;letter-spacing:.22em;text-transform:uppercase;
+  color:rgba(247,243,236,.7);font-family:var(--sans);
+}
+.film-cta{
+  padding:40px 48px;display:flex;justify-content:center;
+  border-top:1px solid rgba(247,243,236,.06);
+}
 
-    /* PROCESS */
-    .ps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));position:relative}
-    .ps::before{content:'';position:absolute;top:28px;left:10%;right:10%;height:1px;background:var(--border);z-index:0}
-    .pst{text-align:center;padding:0 14px;position:relative;z-index:1}
-    .psn{width:56px;height:56px;border:1.5px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:1.1rem;color:var(--gold);background:#fff}
-    .pstitle{font-size:.95rem;margin-bottom:8px;font-weight:normal}
-    .psdesc{font-size:.84rem;color:var(--tm);font-style:italic}
+/* ---- PACKAGES ---- */
+.pkg-section{background:var(--cream2);padding:100px 48px}
+.pkg-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;
+  margin-top:48px;align-items:start;
+}
+.pkg{
+  background:var(--cream);
+  border:1px solid var(--parchment);
+  padding:48px 36px;
+  position:relative;
+  transition:border-color .3s,transform .3s;
+}
+.pkg:hover{border-color:var(--sage-light);transform:translateY(-4px)}
+.pkg.pop{
+  border-color:var(--sage);
+  background:var(--cream);
+}
+.pop-tag{
+  position:absolute;top:-1px;left:50%;transform:translateX(-50%);
+  background:var(--sage);color:var(--cream);
+  font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;
+  padding:5px 18px;white-space:nowrap;
+}
+.pkg-label{
+  font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;
+  color:var(--ink3);margin-bottom:16px;
+}
+.pkg-price{
+  font-family:var(--serif);font-size:3.8rem;font-weight:400;line-height:1;
+  color:var(--ink);margin-bottom:4px;
+}
+.pkg-price sub{font-size:1rem;vertical-align:bottom;margin-right:3px;color:var(--ink3)}
+.pkg-tagline{
+  font-size:.83rem;color:var(--ink3);font-style:italic;
+  margin-bottom:28px;padding-bottom:24px;
+  border-bottom:1px solid var(--parchment);
+}
+.pkg-list{list-style:none;margin-bottom:32px}
+.pkg-list li{
+  font-size:.87rem;color:var(--ink2);
+  padding:9px 0;border-bottom:1px solid var(--cream2);
+  display:flex;align-items:center;gap:12px;
+}
+.pkg-list li::before{
+  content:'';width:6px;height:6px;border-radius:50%;
+  background:var(--sage);flex-shrink:0;
+}
+.pkg-btn{
+  display:block;text-align:center;
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;
+  text-decoration:none;padding:13px;
+  transition:.25s;border:1px solid var(--ink3);color:var(--ink);
+}
+.pkg-btn:hover,.pkg-btn.filled{background:var(--ink);color:var(--cream);border-color:var(--ink)}
+.pkg-note{
+  text-align:center;margin-top:22px;
+  font-size:.75rem;color:var(--ink3);font-style:italic;
+}
 
-    /* CONTACT */
-    .cg{display:grid;grid-template-columns:1fr 1.2fr;gap:60px;align-items:start}
-    .ci2 h3{font-size:1.25rem;font-weight:normal;margin-bottom:16px}
-    .cd2{display:flex;align-items:flex-start;gap:14px;margin-bottom:16px}
-    .cic{width:36px;height:36px;border-radius:50%;background:var(--lg);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:1rem}
-    .clbl{font-size:.75rem;color:var(--tl);text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px;font-family:'Helvetica Neue',Arial,sans-serif}
-    .ci2 a{color:var(--td);text-decoration:none}
-    .ci2 a:hover{color:var(--gold)}
-    .cf input,.cf select,.cf textarea{width:100%;padding:13px 16px;border:1px solid var(--border);border-radius:var(--r);font-family:inherit;font-size:.95rem;margin-bottom:14px;transition:border-color var(--tr);background:#fff;color:var(--td)}
-    .cf input:focus,.cf select:focus,.cf textarea:focus{outline:none;border-color:var(--gold)}
-    .cf .fr{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-    .fsuc{background:#e8f5ee;border:1px solid #a8d5b5;color:var(--success);padding:14px 18px;border-radius:var(--r);font-size:.9rem;display:none;margin-top:8px}
+/* ---- PROCESS ---- */
+.process-section{background:var(--rose-pale);padding:100px 48px}
+.process-steps{
+  display:grid;grid-template-columns:repeat(5,1fr);gap:0;
+  position:relative;margin-top:56px;
+}
+.process-steps::before{
+  content:'';position:absolute;
+  top:26px;left:calc(10% + 13px);right:calc(10% + 13px);
+  height:1px;background:var(--rose-light);
+}
+.pstep{text-align:center;padding:0 16px;position:relative}
+.pstep-n{
+  width:52px;height:52px;border-radius:50%;
+  border:1px solid var(--rose);
+  background:var(--rose-pale);
+  display:flex;align-items:center;justify-content:center;
+  margin:0 auto 20px;
+  font-family:var(--serif);font-size:.9rem;color:var(--rose);
+  position:relative;z-index:1;
+}
+.pstep h3{font-family:var(--serif);font-size:1rem;font-weight:400;margin-bottom:8px;color:var(--ink)}
+.pstep p{font-size:.8rem;color:var(--ink3);line-height:1.75}
 
-    /* FOOTER */
-    footer{background:var(--accent);color:rgba(255,255,255,.82);padding:56px 0 24px}
-    .fg{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:40px;margin-bottom:40px}
-    .fb h3{font-size:1.2rem;font-weight:normal;color:#fff;margin-bottom:12px;letter-spacing:.06em;text-transform:uppercase}
-    .fb p{font-size:.87rem;line-height:1.7;font-style:italic}
-    .fcol h4{font-size:.75rem;text-transform:uppercase;letter-spacing:.12em;color:rgba(255,255,255,.42);margin-bottom:14px;font-family:'Helvetica Neue',Arial,sans-serif}
-    .fcol a{display:block;color:rgba(255,255,255,.7);text-decoration:none;font-size:.86rem;margin-bottom:8px;transition:color var(--tr);font-family:'Helvetica Neue',Arial,sans-serif}
-    .fcol a:hover{color:var(--gl)}
-    .fbot{border-top:1px solid rgba(255,255,255,.1);padding-top:20px;display:flex;justify-content:space-between;align-items:center;font-size:.79rem;color:rgba(255,255,255,.35);font-family:'Helvetica Neue',Arial,sans-serif}
-    .fbot a{color:rgba(255,255,255,.35);text-decoration:none}
+/* ---- TESTIMONIALS ---- */
+.testi-section{background:var(--cream)}
+.testi-grid{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px;
+}
+.tcard{
+  background:var(--cream2);padding:36px 30px;
+  border-top:2px solid var(--sage-light);
+  transition:border-color .3s;
+}
+.tcard:hover{border-top-color:var(--rose)}
+.tcard-stars{color:var(--rose);font-size:.8rem;letter-spacing:.08em;margin-bottom:18px}
+.tcard-text{
+  font-family:var(--serif);font-style:italic;font-size:1rem;
+  color:var(--ink2);line-height:1.75;margin-bottom:22px;
+}
+.tcard-author{display:flex;align-items:center;gap:14px}
+.tcard-avatar{
+  width:42px;height:42px;border-radius:50%;
+  object-fit:cover;filter:grayscale(.3);
+}
+.tcard-name{font-size:.85rem;color:var(--ink);font-weight:400}
+.tcard-date{font-size:.72rem;color:var(--ink3);font-style:italic}
+.testi-google{
+  display:inline-flex;align-items:center;gap:16px;
+  background:var(--cream2);border:1px solid var(--parchment);
+  padding:18px 28px;margin-top:40px;
+}
+.testi-google-rating{font-family:var(--serif);font-size:1.5rem;color:var(--rose)}
+.testi-google-stars{color:var(--rose);font-size:.78rem}
+.testi-google-count{font-size:.67rem;letter-spacing:.1em;color:var(--ink3);text-transform:uppercase}
 
-    /* LIGHTBOX */
-    .lb{position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,.93);display:none;align-items:center;justify-content:center}
-    .lb.open{display:flex}
-    .lbi{max-width:90vw;max-height:88vh;border-radius:3px}
-    .lbx{position:absolute;top:20px;right:24px;background:none;border:none;color:#fff;font-size:2rem;cursor:pointer;opacity:.7;line-height:1}
-    .lbx:hover{opacity:1}
-    .lbp,.lbn{position:absolute;top:50%;transform:translateY(-50%);background:rgba(255,255,255,.12);border:none;color:#fff;font-size:2rem;cursor:pointer;padding:12px 16px;border-radius:var(--r);transition:background var(--tr)}
-    .lbp{left:16px}.lbn{right:16px}
-    .lbp:hover,.lbn:hover{background:rgba(255,255,255,.25)}
+/* ---- AVAILABILITY ---- */
+.avail-section{
+  display:grid;grid-template-columns:1fr 1fr;
+  background:var(--ink);color:var(--cream);
+}
+.avail-image{
+  position:relative;overflow:hidden;min-height:600px;
+}
+.avail-image img{width:100%;height:100%;object-fit:cover;filter:saturate(.6) brightness(.8)}
+.avail-image::after{
+  content:'Rezerviši\Atermin';
+  position:absolute;bottom:40px;left:40px;
+  font-family:var(--display);font-size:3rem;font-style:italic;font-weight:300;
+  color:var(--cream);line-height:1.15;
+  text-shadow:0 2px 20px rgba(0,0,0,.4);
+  white-space:pre;
+}
+.avail-form{padding:72px 56px}
+.avail-form h2{font-family:var(--serif);font-size:2.2rem;font-weight:400;margin-bottom:8px}
+.avail-form h2 em{font-style:italic;color:var(--rose-light)}
+.avail-form p{font-size:.83rem;color:rgba(247,243,236,.45);line-height:1.8;margin-bottom:28px}
+.avail-note{
+  background:rgba(196,144,122,.1);border-left:2px solid var(--rose);
+  padding:12px 16px;margin-bottom:24px;
+  font-size:.78rem;color:rgba(247,243,236,.5);line-height:1.7;
+}
 
-    /* CHAT */
-    .cbbl{position:fixed;bottom:28px;right:28px;z-index:2000}
-    .cbtn{width:60px;height:60px;background:var(--accent);border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:var(--s3);transition:transform var(--tr)}
-    .cbtn:hover{transform:scale(1.08)}
-    .cdot{position:absolute;top:3px;right:3px;width:13px;height:13px;background:#2ecc71;border-radius:50%;border:2px solid #fff;animation:pd 2s infinite}
-    @keyframes pd{0%,100%{transform:scale(1)}50%{transform:scale(1.25)}}
-    .cwin{position:absolute;bottom:72px;right:0;width:320px;background:#fff;border-radius:12px;box-shadow:var(--s3);border:1px solid var(--border);display:none;flex-direction:column;overflow:hidden}
-    .cwin.open{display:flex}
-    .cwh{background:var(--accent);color:#fff;padding:15px 18px;display:flex;align-items:center;gap:12px}
-    .cwav{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0}
-    .cwt{font-size:.9rem}.cws{font-size:.72rem;opacity:.75}
-    .cwx{margin-left:auto;background:none;border:none;color:#fff;font-size:1.2rem;cursor:pointer}
-    .cms{flex:1;padding:14px;min-height:180px;max-height:240px;overflow-y:auto;display:flex;flex-direction:column;gap:9px}
-    .cm{max-width:85%;padding:9px 13px;border-radius:12px;font-size:.86rem;line-height:1.5;font-family:'Helvetica Neue',Arial,sans-serif}
-    .cm.bot{background:var(--lg);align-self:flex-start;border-bottom-left-radius:2px}
-    .cm.usr{background:var(--accent);color:#fff;align-self:flex-end;border-bottom-right-radius:2px}
-    .cqr{display:flex;flex-wrap:wrap;gap:6px;padding:0 14px 10px}
-    .cqb{font-size:.76rem;padding:5px 10px;border:1px solid var(--border);border-radius:20px;background:none;cursor:pointer;font-family:'Helvetica Neue',Arial,sans-serif;transition:background var(--tr);color:var(--td)}
-    .cqb:hover{background:var(--lg)}
-    .cir{display:flex;border-top:1px solid var(--border);padding:9px 12px;gap:8px}
-    .cinp{flex:1;border:1px solid var(--border);border-radius:20px;padding:7px 13px;font-size:.86rem;font-family:inherit;outline:none}
-    .cinp:focus{border-color:var(--gold)}
-    .csnd{background:var(--accent);color:#fff;border:none;border-radius:50%;width:33px;height:33px;cursor:pointer;display:flex;align-items:center;justify-content:center}
+/* CAL */
+.cal{border:1px solid rgba(247,243,236,.1);margin-bottom:24px}
+.cal-head{
+  padding:14px 18px;background:rgba(247,243,236,.04);
+  display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid rgba(247,243,236,.06);
+}
+.cal-head h3{font-family:var(--sans);font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--rose-light);font-weight:300}
+.cal-nb{background:none;border:none;color:var(--rose-light);font-size:1.3rem;cursor:pointer;padding:3px 10px;transition:.2s}
+.cal-nb:hover{opacity:.7}
+.cdh{display:grid;grid-template-columns:repeat(7,1fr);padding:8px 0;border-bottom:1px solid rgba(247,243,236,.05)}
+.cdh span{text-align:center;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(247,243,236,.2)}
+.cdays{display:grid;grid-template-columns:repeat(7,1fr)}
+.cday{
+  aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  font-size:.8rem;color:rgba(247,243,236,.45);cursor:default;transition:.2s;
+}
+.cday.free{cursor:pointer;color:var(--cream)}
+.cday.free:hover{background:rgba(196,144,122,.15);color:var(--rose-light)}
+.cday.bkd{color:rgba(247,243,236,.2);text-decoration:line-through}
+.cday.tod{color:var(--rose-light);font-weight:400}
+.cday.sel{background:var(--rose);color:var(--cream) !important}
+.cal-leg{padding:10px 18px;border-top:1px solid rgba(247,243,236,.06);display:flex;gap:20px;font-size:.65rem;color:rgba(247,243,236,.3);font-family:var(--sans)}
+.cal-leg span{display:flex;align-items:center;gap:7px}
+.ldot{width:7px;height:7px;border-radius:50%}
 
-    /* STICKY */
-    .scta{display:none;position:fixed;bottom:0;left:0;right:0;z-index:1500;background:var(--accent);color:#fff;padding:13px 20px;text-align:center;font-size:.91rem;font-family:'Helvetica Neue',Arial,sans-serif}
-    .scta a{color:var(--gl);text-decoration:none;font-weight:bold}
+.fi{
+  width:100%;background:rgba(247,243,236,.06);border:1px solid rgba(247,243,236,.1);
+  color:var(--cream);font-family:var(--sans);font-size:.85rem;font-weight:300;
+  padding:12px 16px;margin-bottom:10px;outline:none;
+  transition:border-color .25s;
+}
+.fi:focus{border-color:rgba(196,144,122,.5)}
+.fi::placeholder{color:rgba(247,243,236,.2)}
+.fi option{background:var(--ink)}
+.fi-date{color-scheme:dark}
+.sel-dt{font-size:.68rem;letter-spacing:.15em;text-transform:uppercase;color:var(--rose-light);margin-bottom:16px}
+.sub-btn{
+  width:100%;background:var(--rose);color:var(--cream);
+  border:none;cursor:pointer;padding:15px;
+  font-family:var(--sans);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:400;transition:background .25s;
+}
+.sub-btn:hover{background:var(--rose-light)}
+.form-ok{
+  background:rgba(90,112,85,.15);border:1px solid rgba(90,112,85,.3);
+  color:#9abf94;padding:12px 16px;
+  font-size:.78rem;margin-top:8px;display:none;
+}
 
-    /* FADE IN */
-    .fi{opacity:0;transform:translateY(20px);transition:opacity .55s ease,transform .55s ease}
-    .fi.vis{opacity:1;transform:none}
+/* ---- CONTACT ---- */
+.contact-section{padding:100px 48px;background:var(--cream2)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:80px}
+.contact-info h2{font-family:var(--serif);font-size:clamp(1.8rem,4vw,3.2rem);font-weight:400;font-style:italic;line-height:1.1;margin-bottom:28px}
+.contact-row{
+  display:flex;align-items:flex-start;gap:18px;
+  padding:18px 0;border-bottom:1px solid var(--parchment);
+}
+.c-icon{
+  width:34px;height:34px;border-radius:50%;
+  background:var(--sage-light);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.9rem;flex-shrink:0;opacity:.8;
+}
+.c-lbl{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--sage-dark);margin-bottom:3px}
+.c-val{font-size:.88rem;color:var(--ink2)}
+.c-val a{color:inherit;text-decoration:none;transition:.2s}
+.c-val a:hover{color:var(--rose)}
+.contact-form{background:var(--cream);border:1px solid var(--parchment);padding:44px 40px}
+.contact-form h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;margin-bottom:26px}
+.cf-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cf-inp{
+  width:100%;background:var(--cream2);border:1px solid var(--parchment);
+  color:var(--ink);font-family:var(--sans);font-size:.88rem;font-weight:300;
+  padding:12px 16px;margin-bottom:12px;outline:none;
+  transition:border-color .25s;
+}
+.cf-inp:focus{border-color:var(--sage)}
+.cf-inp::placeholder{color:var(--ink3)}
+.cf-inp option{background:var(--cream)}
+.cf-btn{
+  width:100%;background:var(--ink);color:var(--cream);
+  border:none;cursor:pointer;padding:15px;
+  font-family:var(--sans);font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;
+  font-weight:300;transition:background .25s;
+}
+.cf-btn:hover{background:var(--sage-dark)}
+.cf-ok{
+  background:rgba(90,112,85,.1);border:1px solid rgba(90,112,85,.25);
+  color:var(--sage-dark);padding:12px 16px;
+  font-size:.8rem;margin-top:10px;display:none;
+}
+.social-links{display:flex;gap:12px;margin-top:24px;flex-wrap:wrap}
+.social-link{
+  font-size:.65rem;letter-spacing:.18em;text-transform:uppercase;
+  background:var(--parchment);color:var(--ink2);
+  padding:9px 18px;text-decoration:none;transition:.25s;
+}
+.social-link:hover{background:var(--sage-light)}
 
-    /* RESPONSIVE */
-    @media(max-width:960px){
-      .aw,.cg{grid-template-columns:1fr}
-      .fg{grid-template-columns:1fr 1fr}
-      .ps::before{display:none}
-      .pgal{grid-template-columns:1fr 1fr}
-      .gi.wide{grid-column:span 1}
-    }
-    @media(max-width:680px){
-      .nl{display:none}.hbg{display:flex}
-      .hero{min-height:82vh}
-      .hstats{flex-wrap:wrap}
-      .hstat{min-width:50%;border-bottom:1px solid rgba(255,255,255,.1)}
-      .pgal{grid-template-columns:1fr}
-      .gi.wide{grid-column:span 1}
-      .cf .fr{grid-template-columns:1fr}
-      .fg{grid-template-columns:1fr}
-      .fbot{flex-direction:column;gap:8px;text-align:center}
-      .scta{display:block}
-      .cbbl{bottom:70px}
-      .ptab{padding:10px 12px;font-size:.76rem}
-    }
-  </style>
+/* ---- FOOTER ---- */
+footer{background:var(--ink2);color:rgba(247,243,236,.6);padding:56px 48px 28px}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr;gap:48px;margin-bottom:44px}
+.footer-brand .logo{color:var(--cream);font-size:1.2rem;display:block;margin-bottom:14px}
+.footer-brand p{font-size:.83rem;line-height:1.8;color:rgba(247,243,236,.4)}
+.footer-col h4{font-size:.6rem;letter-spacing:.28em;text-transform:uppercase;color:rgba(247,243,236,.25);margin-bottom:16px}
+.footer-col a{display:block;font-size:.82rem;color:rgba(247,243,236,.4);text-decoration:none;margin-bottom:10px;transition:.2s}
+.footer-col a:hover{color:var(--rose-light)}
+.footer-bot{
+  border-top:1px solid rgba(247,243,236,.06);padding-top:20px;
+  display:flex;justify-content:space-between;align-items:center;
+  font-size:.67rem;letter-spacing:.08em;color:rgba(247,243,236,.2);flex-wrap:wrap;gap:8px;
+}
+.footer-bot a{color:inherit;text-decoration:none}
+
+/* ---- LB ---- */
+.lb{position:fixed;inset:0;z-index:9000;background:rgba(42,37,32,.97);display:none;align-items:center;justify-content:center}
+.lb.on{display:flex}
+.lb img{max-width:90vw;max-height:88vh;object-fit:contain;filter:saturate(.85)}
+.lb-x{position:absolute;top:22px;right:28px;background:none;border:none;color:rgba(247,243,236,.5);font-size:2rem;cursor:pointer;transition:.2s}
+.lb-x:hover{color:var(--rose-light)}
+.lb-pv,.lb-nx{
+  position:absolute;top:50%;transform:translateY(-50%);
+  background:rgba(247,243,236,.08);border:1px solid rgba(247,243,236,.12);
+  color:var(--cream);font-size:1.8rem;cursor:pointer;
+  padding:12px 16px;transition:.25s;
+}
+.lb-pv{left:16px}.lb-nx{right:16px}
+.lb-pv:hover,.lb-nx:hover{background:rgba(196,144,122,.2)}
+
+/* ---- MOBILE STICKY ---- */
+.mob-sticky{
+  display:none;position:fixed;bottom:0;left:0;right:0;z-index:700;
+  background:var(--ink);padding:14px;text-align:center;
+  font-size:.68rem;letter-spacing:.18em;text-transform:uppercase;color:var(--cream);
+}
+.mob-sticky a{color:var(--rose-light);text-decoration:none;margin:0 12px}
+
+/* ---- FADE ---- */
+.fade{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.fade.in{opacity:1;transform:none}
+
+/* ---- RESPONSIVE ---- */
+@media(max-width:1100px){
+  .hero{grid-template-columns:1fr}
+  .hero-right{display:none}
+  .hero-left{min-height:100svh;justify-content:flex-end;padding:0 36px 80px}
+  .hero-left::after{display:none}
+  .about-wrap{grid-template-columns:1fr}
+  .about-image-col{height:55vw}
+  .avail-section{grid-template-columns:1fr}
+  .avail-image{display:none}
+  .contact-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr 1fr}
+  .pkg-grid{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .process-steps{grid-template-columns:1fr 1fr;gap:40px}
+  .process-steps::before{display:none}
+}
+@media(max-width:768px){
+  nav{padding:18px 24px}
+  nav.solid{padding:14px 24px}
+  .nav-ul{display:none}
+  .hamburger{display:flex}
+  .section{padding:72px 24px}
+  .pkg-section,.contact-section,.process-section,.testi-section,.avail-form,.why-section,.avail-section{padding:72px 24px}
+  .about-text-col{padding:48px 24px}
+  .hero-left{padding:0 24px 80px}
+  .trust{padding:14px 24px;gap:20px}
+  .port-header{padding:0 24px 36px}
+  .filmstrip-wrap{padding:0 24px 0}
+  .film-item img{height:300px}
+  .film-item.p img{width:200px}
+  .film-item.l img{width:440px}
+  .film-item.s img{width:300px}
+  .film-cta{padding:32px 24px}
+  .cf-row{grid-template-columns:1fr}
+  .why-grid{grid-template-columns:1fr}
+  .footer-grid{grid-template-columns:1fr;gap:32px}
+  footer{padding:48px 24px 24px}
+  .footer-bot{flex-direction:column;text-align:center}
+  .mob-sticky{display:block}
+  .process-steps{grid-template-columns:1fr;gap:32px}
+  .portfolio-section{padding:60px 0 0}
+}
+</style>
 </head>
 <body>
 
+<div class="cur-c" id="cc"></div>
+<div class="cur-r" id="cr"></div>
+
 <!-- NAV -->
-<header id="hdr">
-  <nav class="container">
-    <a href="#pocetna" class="logo">Foto<span>Zenica</span></a>
-    <ul class="nl">
-      <li><a href="#o-meni">O meni</a></li>
-      <li><a href="#portfolio">Portfolio</a></li>
-      <li><a href="#cijene">Cijene</a></li>
-      <li><a href="#dostupnost">Dostupnost</a></li>
-      <li><a href="#recenzije">Recenzije</a></li>
-      <li><a href="#kontakt" class="ncta">Rezerviši termin</a></li>
-    </ul>
-    <button class="hbg" id="hbg" aria-label="Meni"><span></span><span></span><span></span></button>
-  </nav>
-</header>
-<div class="mnav" id="mnav">
+<nav id="nav">
+  <a href="#" class="logo">Foto<em>Zenica</em></a>
+  <ul class="nav-ul">
+    <li><a href="#o-meni">O meni</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#cijene">Cijene</a></li>
+    <li><a href="#recenzije">Recenzije</a></li>
+    <li><a href="#kontakt" class="cta">Rezerviši termin</a></li>
+  </ul>
+  <button class="hamburger" id="hbtn" aria-label="Meni">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mob-nav" id="mnav">
   <a href="#o-meni" onclick="closeMnav()">O meni</a>
   <a href="#portfolio" onclick="closeMnav()">Portfolio</a>
   <a href="#cijene" onclick="closeMnav()">Cijene</a>
-  <a href="#dostupnost" onclick="closeMnav()">Dostupnost</a>
   <a href="#recenzije" onclick="closeMnav()">Recenzije</a>
-  <a href="#kontakt" onclick="closeMnav()">Kontakt</a>
+  <a href="#kontakt" onclick="closeMnav()">Rezerviši</a>
 </div>
 
 <!-- HERO -->
 <section class="hero" id="pocetna">
-  <div class="hbg-img" id="hbg-el"></div>
-  <div class="container">
-    <div class="hc">
-      <div class="htag">📍 Zenica, Bosna i Hercegovina</div>
-      <h1>Vaše vjenčanje.<br><em>Zauvijek zapamćeno.</em></h1>
-      <p>Svaki pogled, svaki osmijeh, svaki trenutak – pretočen u sliku koja priča vašu priču. Profesionalno fotografisanje vjenčanja i posebnih događaja u Zenici i okolini.</p>
-      <div class="hbtns">
-        <a href="#kontakt" class="btn btn-gd">Rezerviši termin</a>
-        <a href="#portfolio" class="btn btn-ol" style="color:#fff;border-color:rgba(255,255,255,.55)">Pogledaj radove</a>
-      </div>
+  <div class="hero-left">
+    <div class="hero-eyebrow">Zenica, Bosna i Hercegovina</div>
+    <h1>Vaše vjenčanje.<br><em>Zauvijek</em><br>u slici.</h1>
+    <p class="hero-desc">Svaki pogled, svaki osmijeh, svaki tihi trenutak između — pretočen u fotografiju koja priča vašu priču, generacijama.</p>
+    <div class="hero-actions">
+      <a href="#kontakt" class="btn-fill">Rezerviši termin</a>
+      <a href="#portfolio" class="btn-line">Pogledaj portfolio</a>
     </div>
   </div>
-  <div style="position:absolute;bottom:0;left:0;right:0;z-index:2;">
-    <div class="hstats">
-      <div class="hstat"><span class="hstat-n">200+</span><span class="hstat-l">Vjenčanja</span></div>
-      <div class="hstat"><span class="hstat-n">8</span><span class="hstat-l">Godina iskustva</span></div>
-      <div class="hstat"><span class="hstat-n">100%</span><span class="hstat-l">Zadovoljnih parova</span></div>
-      <div class="hstat"><span class="hstat-n">48h</span><span class="hstat-l">Isporuka snimaka</span></div>
+  <div class="hero-right">
+    <img src="https://images.pexels.com/photos/25182720/pexels-photo-25182720.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Fotografisanje vjenčanja Zenica" id="heroimg" style="opacity:0;transition:opacity 1s"/>
+    <div class="hero-stats">
+      <div class="hero-stat"><span class="stat-n">200+</span><span class="stat-l">Vjenčanja</span></div>
+      <div class="hero-stat"><span class="stat-n">8+</span><span class="stat-l">Godina</span></div>
+      <div class="hero-stat"><span class="stat-n">100%</span><span class="stat-l">Zadovoljnih</span></div>
+      <div class="hero-stat"><span class="stat-n">48h</span><span class="stat-l">Isporuka</span></div>
+    </div>
+    <div class="hero-film">
+      <span>Posebni trenuci</span>
+      <span style="color:var(--ink3);font-size:.68rem;letter-spacing:.1em;margin-top:2px">zaslužuju posebne slike</span>
     </div>
   </div>
 </section>
 
-<!-- TRUST BAR -->
+<!-- TRUST -->
 <div class="trust">
-  <div class="container">
-    <div class="trust-i">
-      <div class="ti">✔ Besplatne konsultacije</div>
-      <div class="ti">✔ Fotografije u roku 48 sati</div>
-      <div class="ti">✔ Dostupan vikendom i praznicima</div>
-      <div class="ti">✔ Putujemo po cijeloj BiH</div>
-    </div>
+  <div class="trust-it">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+    Besplatne konsultacije
+  </div>
+  <div class="trust-it">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    Fotografije u roku 48 sati
+  </div>
+  <div class="trust-it">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+    Cijela Bosna i Hercegovina
+  </div>
+  <div class="trust-it">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M3 9h18M9 21V9"/></svg>
+    Dostupan vikendom i praznicima
   </div>
 </div>
 
-<!-- O MENI -->
-<section class="section" id="o-meni">
-  <div class="container">
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:center;" class="fi">
-      <div>
-        <p style="font-size:.8rem;text-transform:uppercase;letter-spacing:.12em;color:var(--tl);margin-bottom:8px;font-family:'Helvetica Neue',Arial,sans-serif;">O fotografu</p>
-        <h2 class="stitle">Bilježim trenutke koji ostaju zauvijek</h2>
-        <div class="div"></div>
-        <p style="color:var(--tm);margin-bottom:16px;font-style:italic;">Fotografisanje vjenčanja nije samo posao – to je privilegija biti prisutan u jednom od najvažnijih dana vašeg života.</p>
-        <p style="color:var(--tm);margin-bottom:16px;">Sa više od 8 godina iskustva u Zenici i okolini, naučio sam da svako vjenčanje ima svoju dušu. Moj pristup je diskretan ali pažljiv – ne namećem se, ali ne propuštam nijedan važan trenutak.</p>
-        <p style="color:var(--tm);margin-bottom:28px;">Koristim profesionalnu Sony i Canon opremu sa rezervnom opremom za svaki slučaj. Svaki bračni par dobija online galeriju sa 400–800 editovanih fotografija visoke rezolucije.</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;">
-          <a href="#portfolio" class="btn btn-dk">Pogledaj portfolio</a>
-          <a href="#kontakt" class="btn btn-ol">Kontaktiraj me</a>
-        </div>
+<!-- ABOUT -->
+<section class="about" id="o-meni">
+  <div class="about-wrap">
+    <div class="about-image-col">
+      <img src="https://images.pexels.com/photos/31562256/pexels-photo-31562256.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Fotograf Zenica" loading="lazy"/>
+      <div class="about-pull">"Svaki bračni par nosi svoju jedinstvenu priču — moj je zadatak da je vidim i sačuvam."</div>
+    </div>
+    <div class="about-text-col">
+      <div class="s-label">O fotografu</div>
+      <h2 class="s-title">Bilježim<br><em>trenutke koji</em><br>ostaju zauvijek</h2>
+      <div class="s-rule"></div>
+      <p>Sa više od <strong>8 godina iskustva</strong> u Zenici i okolini, naučio sam da svako vjenčanje ima svoju dušu. Moj pristup je diskretan ali pažljiv — ne namećem se, ali ne propuštam nijedan važan trenutak.</p>
+      <p>Koristim profesionalnu Sony i Canon opremu sa <strong>redundantnim backup sistemom</strong>. Svaki bračni par dobija online galeriju sa 400–800 editovanih fotografija visoke rezolucije.</p>
+      <div class="about-badge-row">
+        <div class="about-badge"><strong>200+</strong><span>Vjenčanja</span></div>
+        <div class="about-badge"><strong>8+</strong><span>Godina iskustva</span></div>
+        <div class="about-badge"><strong>48h</strong><span>Prva isporuka</span></div>
       </div>
-      <div style="position:relative;">
-        <img src="https://images.pexels.com/photos/31562256/pexels-photo-31562256.jpeg?auto=compress&cs=tinysrgb&w=700" alt="Profesionalni fotograf Zenica – fotografisanje vjenčanja" style="width:100%;border-radius:var(--r);display:block;aspect-ratio:4/5;object-fit:cover;" loading="lazy" />
-        <div style="position:absolute;bottom:-18px;left:-18px;background:var(--gold);color:#fff;padding:18px 22px;border-radius:var(--r);box-shadow:var(--s2);">
-          <div style="font-size:1.9rem;line-height:1;">8+</div>
-          <div style="font-size:.75rem;letter-spacing:.06em;opacity:.92;font-family:'Helvetica Neue',Arial,sans-serif;">GODINA ISKUSTVA</div>
-        </div>
+      <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:8px">
+        <a href="#portfolio" class="btn-fill">Pogledaj portfolio</a>
+        <a href="#kontakt" class="btn-line">Kontaktiraj me</a>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ZAŠTO JA -->
-<section class="section section-alt" id="prednosti">
-  <div class="container">
-    <div class="fi" style="text-align:center;max-width:580px;margin:0 auto 48px;">
-      <h2 class="stitle">Zašto odabrati mene?</h2>
-      <div class="div" style="margin:16px auto 0;"></div>
-      <p class="ssub" style="margin-top:12px;">U moru fotografa, evo šta vas čini razliku</p>
-    </div>
-    <div class="why-g">
-      <div class="wc fi"><div class="wi">⚡</div><h3>Dostava za 48 sati</h3><p>Prvih 50 editovanih fotografija šaljem unutar 48 sati od vjenčanja – za objavu na društvenim mrežama, odmah.</p></div>
-      <div class="wc fi"><div class="wi">🛡</div><h3>Backup garancija</h3><p>Svaka fotografija se snima na dvije SD kartice simultano. Sigurnost vaših uspomena je apsolutni prioritet.</p></div>
-      <div class="wc fi"><div class="wi">🤍</div><h3>Diskretni pristup</h3><p>Radim nevidljivo – ne ometam tok vjenčanja, a bilježim sve važne trenutke prirodno i spontano.</p></div>
-      <div class="wc fi"><div class="wi">📸</div><h3>Neograničen broj fotografija</h3><p>Ne postavljam limit. Snimam sve što vrijedi snimiti i isporučujem kompletno editovanu galeriju.</p></div>
-      <div class="wc fi"><div class="wi">👥</div><h3>Predvjenčano snimanje</h3><p>Uključeno u sve pakete – savršeno da se upoznamo i da se osjećate opušteno pred kameru na veliki dan.</p></div>
-      <div class="wc fi"><div class="wi">🕐</div><h3>Fleksibilno radno vrijeme</h3><p>Dostupan vikendom, praznicima, ujutro i uveče. Prilagođavam se vašem programu bez dodatnih troškova.</p></div>
+<!-- WHY -->
+<section class="why-section section fade" id="prednosti">
+  <div style="max-width:1200px;margin:0 auto">
+    <div class="s-label">Zašto ja</div>
+    <h2 class="s-title">Razlika koja<br>se <em>osjeća</em></h2>
+    <div class="s-rule"></div>
+    <div class="why-grid">
+      <div class="why-card"><div class="why-icon">⚡</div><h3>Dostava za 48 sati</h3><p>Prvih 50 editovanih fotografija šaljem unutar 48 sati od vjenčanja – za objavu na društvenim mrežama, odmah.</p></div>
+      <div class="why-card"><div class="why-icon">🛡</div><h3>Backup garancija</h3><p>Svaka fotografija se snima na dvije SD kartice simultano. Sigurnost vaših uspomena je apsolutni prioritet.</p></div>
+      <div class="why-card"><div class="why-icon">🤍</div><h3>Diskretni pristup</h3><p>Radim nevidljivo – ne ometam tok vjenčanja, a bilježim sve važne trenutke prirodno i spontano.</p></div>
+      <div class="why-card"><div class="why-icon">📸</div><h3>Neograničen broj fotografija</h3><p>Ne postavljam limit. Snimam sve što vrijedi snimiti i isporučujem kompletno editovanu galeriju.</p></div>
+      <div class="why-card"><div class="why-icon">👥</div><h3>Predvjenčano snimanje</h3><p>Uključeno u sve pakete – savršeno da se upoznamo i da se osjećate opušteno pred kameru na veliki dan.</p></div>
+      <div class="why-card"><div class="why-icon">🕐</div><h3>Fleksibilno radno vrijeme</h3><p>Dostupan vikendom, praznicima, ujutro i uveče. Prilagođavam se vašem programu bez dodatnih troškova.</p></div>
     </div>
   </div>
 </section>
 
 <!-- PORTFOLIO -->
-<section class="section" id="portfolio">
-  <div class="container">
-    <div class="fi" style="margin-bottom:40px;">
-      <h2 class="stitle">Portfolio</h2>
-      <div class="div"></div>
-      <p class="ssub">Odabrani radovi – vjenčanja, rodjendani, portreti, pejzaži i priroda</p>
+<section class="portfolio-section" id="portfolio">
+  <div class="port-header fade">
+    <div>
+      <div class="s-label" style="color:var(--rose-light)"><span style="background:var(--rose-light);height:1px;width:28px;display:inline-block;margin-right:14px;vertical-align:middle"></span>Portfolio</div>
+      <h2 class="s-title" style="color:var(--cream)">Odabrani <em style="color:var(--rose-light)">radovi</em></h2>
     </div>
-    <div class="ptabs fi">
-      <button class="ptab active" onclick="showTab('v',this)">Vjenčanja</button>
-      <button class="ptab" onclick="showTab('r',this)">Rodjendani</button>
-      <button class="ptab" onclick="showTab('p',this)">Portreti</button>
-      <button class="ptab" onclick="showTab('l',this)">Pejzaži</button>
-      <button class="ptab" onclick="showTab('n',this)">Priroda</button>
+    <div class="port-tabs">
+      <button class="ptab on" onclick="showFilm('v',this)">Vjenčanja</button>
+      <button class="ptab" onclick="showFilm('r',this)">Rodjendani</button>
+      <button class="ptab" onclick="showFilm('p',this)">Portreti</button>
+      <button class="ptab" onclick="showFilm('l',this)">Pejzaži</button>
+      <button class="ptab" onclick="showFilm('n',this)">Priroda</button>
     </div>
+  </div>
 
-    <!-- VJENČANJA -->
-    <div id="tv" class="pgal active fi">
-      <div class="gi wide" onclick="lo(this)"><img src="https://images.pexels.com/photos/31438861/pexels-photo-31438861.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Fotografisanje vjencanja Zenica crno bijela ceremonija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/33425302/pexels-photo-33425302.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Romantično vjenčanje poljubac luk cvijeća fotograf" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/8815289/pexels-photo-8815289.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Slikanje mladenaca profesionalni fotograf Zenica" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/15283297/pexels-photo-15283297.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vjenčanje u vrtu gosti fotografisanje" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/31048917/pexels-photo-31048917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Elegantno vjenčanje rustikalni prostor par" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/31049025/pexels-photo-31049025.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Romantično vjenčanje na otvorenom sunce fotograf Zenica" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi wide" onclick="lo(this)"><img src="https://images.pexels.com/photos/31562256/pexels-photo-31562256.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Vjenčani poljubac mjehurići sapuna fotografija vjenčanje" loading="lazy"/><div class="gio"><span>+</span></div></div>
+  <div class="filmstrip-wrap">
+    <!-- VJENCANJA -->
+    <div class="filmstrip on" id="fv">
+      <div class="film-item l" onclick="openLb(this,'fv')"><img src="https://images.pexels.com/photos/31438861/pexels-photo-31438861.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Vjenčanje ceremonija" loading="lazy"/><div class="film-item-cap"><span>Ceremonija / Zenica</span></div></div>
+      <div class="film-item p" onclick="openLb(this,'fv')"><img src="https://images.pexels.com/photos/33425302/pexels-photo-33425302.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cvijeće luk" loading="lazy"/><div class="film-item-cap"><span>Luk od cvijeća</span></div></div>
+      <div class="film-item p" onclick="openLb(this,'fv')"><img src="https://images.pexels.com/photos/8815289/pexels-photo-8815289.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mladenci" loading="lazy"/><div class="film-item-cap"><span>Mladenci</span></div></div>
+      <div class="film-item s" onclick="openLb(this,'fv')"><img src="https://images.pexels.com/photos/15283297/pexels-photo-15283297.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Vjenčanje u vrtu" loading="lazy"/><div class="film-item-cap"><span>Prijem</span></div></div>
+      <div class="film-item p" onclick="openLb(this,'fv')"><img src="https://images.pexels.com/photos/31048917/pexels-photo-31048917.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rustikalni prostor" loading="lazy"/><div class="film-item-cap"><span>Rustikalni prostor</span></div></div>
+      <div class="film-item l" onclick="openLb(this,'fv')"><img src="https://images.pexels.com/photos/31562256/pexels-photo-31562256.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Poseban trenutak" loading="lazy"/><div class="film-item-cap"><span>Poseban trenutak</span></div></div>
     </div>
-
     <!-- RODJENDANI -->
-    <div id="tr" class="pgal fi">
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/9627777/pexels-photo-9627777.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Svjećica torta rodjendan fotografisanje Zenica" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/33010504/pexels-photo-33010504.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Plava torta rodjendan jezero fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/7100296/pexels-photo-7100296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Djevojčica rodjendan kapa cupcake svjećica broj 4" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/7099944/pexels-photo-7099944.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Djevojčice sjedenje pod fotografisanje rodjendana djeca" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/7099945/pexels-photo-7099945.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Djeca na rodjendan žurki fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/7100324/pexels-photo-7100324.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Djevojčice torta rodjendan smijeh fotografisanje" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi wide" onclick="lo(this)"><img src="https://images.pexels.com/photos/7099896/pexels-photo-7099896.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Djeca rodjendanska žurka fotografisanje Zenica" loading="lazy"/><div class="gio"><span>+</span></div></div>
+    <div class="filmstrip" id="fr">
+      <div class="film-item s" onclick="openLb(this,'fr')"><img src="https://images.pexels.com/photos/9627777/pexels-photo-9627777.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Torta rodjendan" loading="lazy"/><div class="film-item-cap"><span>Torta i svjećice</span></div></div>
+      <div class="film-item l" onclick="openLb(this,'fr')"><img src="https://images.pexels.com/photos/33010504/pexels-photo-33010504.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Plava torta" loading="lazy"/><div class="film-item-cap"><span>Plava torta</span></div></div>
+      <div class="film-item p" onclick="openLb(this,'fr')"><img src="https://images.pexels.com/photos/7100296/pexels-photo-7100296.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Djevojčica rodjendan" loading="lazy"/><div class="film-item-cap"><span>Poseban dan</span></div></div>
+      <div class="film-item s" onclick="openLb(this,'fr')"><img src="https://images.pexels.com/photos/7099944/pexels-photo-7099944.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Djeca" loading="lazy"/><div class="film-item-cap"><span>Djeca</span></div></div>
+      <div class="film-item l" onclick="openLb(this,'fr')"><img src="https://images.pexels.com/photos/7099896/pexels-photo-7099896.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Žurka" loading="lazy"/><div class="film-item-cap"><span>Žurka</span></div></div>
     </div>
-
     <!-- PORTRETI -->
-    <div id="tp" class="pgal fi">
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/18853747/pexels-photo-18853747.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Muški portret brada kamera profesionalni fotograf Zenica" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/13376011/pexels-photo-13376011.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Muški portret siva košulja bijela kapa fotograf" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/34911775/pexels-photo-34911775.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Mladi čovjek Ohridsko jezero portret priroda Balkan" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/14359148/pexels-photo-14359148.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Čovjek ribolov portret vanjski fotografisanje" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi wide" onclick="lo(this)"><img src="https://images.pexels.com/photos/18897395/pexels-photo-18897395.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Ženska plava kosa bijeli pulovr portret profesionalni fotograf" loading="lazy"/><div class="gio"><span>+</span></div></div>
+    <div class="filmstrip" id="fp">
+      <div class="film-item p" onclick="openLb(this,'fp')"><img src="https://images.pexels.com/photos/18853747/pexels-photo-18853747.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Portret" loading="lazy"/><div class="film-item-cap"><span>Portret</span></div></div>
+      <div class="film-item s" onclick="openLb(this,'fp')"><img src="https://images.pexels.com/photos/13376011/pexels-photo-13376011.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Vanjski portret" loading="lazy"/><div class="film-item-cap"><span>Vanjski portret</span></div></div>
+      <div class="film-item p" onclick="openLb(this,'fp')"><img src="https://images.pexels.com/photos/34911775/pexels-photo-34911775.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Portret jezero" loading="lazy"/><div class="film-item-cap"><span>Ohridsko jezero</span></div></div>
+      <div class="film-item l" onclick="openLb(this,'fp')"><img src="https://images.pexels.com/photos/18897395/pexels-photo-18897395.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Portret priroda" loading="lazy"/><div class="film-item-cap"><span>Prirodni portret</span></div></div>
     </div>
-
-    <!-- PEJZAŽI -->
-    <div id="tl" class="pgal fi">
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/34197762/pexels-photo-34197762.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Džamija planinski pejzaž Bosna fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/28183670/pexels-photo-28183670.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Ptica most grad fotografija Bosna pejzaž" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/33740700/pexels-photo-33740700.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Blagaj tekija litica Bosna i Hercegovina fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/28191308/pexels-photo-28191308.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Komovi planine pejzaž fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/34288762/pexels-photo-34288762.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Konjic ulica Bosna i Hercegovina šarm fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/25798560/pexels-photo-25798560.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Drvengrad Srbija pejzaž kuće fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi wide" onclick="lo(this)"><img src="https://images.pexels.com/photos/20305455/pexels-photo-20305455.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mehmed paša Sokolović most Višegrad Bosna i Hercegovina" loading="lazy"/><div class="gio"><span>+</span></div></div>
+    <!-- PEJZAZI -->
+    <div class="filmstrip" id="fl">
+      <div class="film-item s" onclick="openLb(this,'fl')"><img src="https://images.pexels.com/photos/34197762/pexels-photo-34197762.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Bosna planine" loading="lazy"/><div class="film-item-cap"><span>Bosna</span></div></div>
+      <div class="film-item l" onclick="openLb(this,'fl')"><img src="https://images.pexels.com/photos/33740700/pexels-photo-33740700.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Blagaj" loading="lazy"/><div class="film-item-cap"><span>Blagaj tekija</span></div></div>
+      <div class="film-item p" onclick="openLb(this,'fl')"><img src="https://images.pexels.com/photos/28191308/pexels-photo-28191308.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Planine" loading="lazy"/><div class="film-item-cap"><span>Planine</span></div></div>
+      <div class="film-item l" onclick="openLb(this,'fl')"><img src="https://images.pexels.com/photos/20305455/pexels-photo-20305455.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Višegrad most" loading="lazy"/><div class="film-item-cap"><span>Most Višegrad</span></div></div>
     </div>
-
     <!-- PRIRODA -->
-    <div id="tn" class="pgal fi">
-      <div class="gi wide" onclick="lo(this)"><img src="https://images.pexels.com/photos/20282313/pexels-photo-20282313.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Trnovačko jezero Crna Gora priroda fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/30894217/pexels-photo-30894217.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Planinska dolina Čajniče Bosna priroda fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/14383809/pexels-photo-14383809.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Grad planine rijeka priroda scenski pogled" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/34288750/pexels-photo-34288750.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Rijeka pejzaž Bosna i Hercegovina priroda" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/13453691/pexels-photo-13453691.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Zelena planina snijeg vrh planinski pejzaž" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi" onclick="lo(this)"><img src="https://images.pexels.com/photos/26256429/pexels-photo-26256429.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Neretva Stari Most Mostar pogled fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
-      <div class="gi wide" onclick="lo(this)"><img src="https://images.pexels.com/photos/34288754/pexels-photo-34288754.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Mirna rijeka Balkan planine prirodna fotografija" loading="lazy"/><div class="gio"><span>+</span></div></div>
+    <div class="filmstrip" id="fn">
+      <div class="film-item l" onclick="openLb(this,'fn')"><img src="https://images.pexels.com/photos/20282313/pexels-photo-20282313.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Trnovačko jezero" loading="lazy"/><div class="film-item-cap"><span>Trnovačko jezero</span></div></div>
+      <div class="film-item p" onclick="openLb(this,'fn')"><img src="https://images.pexels.com/photos/30894217/pexels-photo-30894217.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Dolina" loading="lazy"/><div class="film-item-cap"><span>Čajniče</span></div></div>
+      <div class="film-item s" onclick="openLb(this,'fn')"><img src="https://images.pexels.com/photos/34288750/pexels-photo-34288750.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Rijeka" loading="lazy"/><div class="film-item-cap"><span>Rijeka BiH</span></div></div>
+      <div class="film-item l" onclick="openLb(this,'fn')"><img src="https://images.pexels.com/photos/26256429/pexels-photo-26256429.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Stari most" loading="lazy"/><div class="film-item-cap"><span>Stari Most, Mostar</span></div></div>
     </div>
-
-    <div class="fi" style="text-align:center;margin-top:36px;">
-      <a href="#kontakt" class="btn btn-ol">Zatražite kompletan portfolio →</a>
-    </div>
+  </div>
+  <div class="film-cta">
+    <a href="#kontakt" class="btn-line" style="color:rgba(247,243,236,.6);border-color:rgba(247,243,236,.25)">Zatražite kompletan portfolio →</a>
   </div>
 </section>
 
-<!-- PAKETI -->
-<section class="section section-alt" id="cijene">
-  <div class="container">
-    <div class="fi" style="text-align:center;max-width:580px;margin:0 auto 48px;">
-      <h2 class="stitle">Paketi i cijene</h2>
-      <div class="div" style="margin:16px auto 0;"></div>
-      <p class="ssub" style="margin-top:12px;">Transparentne cijene bez skrivenih troškova</p>
-    </div>
-    <div class="pkgs">
-      <div class="pkg fi">
-        <div class="pname">Esencijalni</div>
-        <div class="pprice">400 <span>KM</span></div>
-        <div class="pdesc">Savršen za manja vjenčanja i skromnija slavlja</div>
-        <ul class="pf">
-          <li><span class="fc">✦</span>4 sata fotografisanja</li>
-          <li><span class="fc">✦</span>200+ editovanih fotografija</li>
-          <li><span class="fc">✦</span>Online galerija 12 mjeseci</li>
-          <li><span class="fc">✦</span>Preuzimanje u punoj rezoluciji</li>
-          <li><span class="fc">✦</span>1 fotograf</li>
+<!-- PACKAGES -->
+<section class="pkg-section fade" id="cijene">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="s-label">Cijene</div>
+    <h2 class="s-title">Paketi bez<br><em>skrivenih troškova</em></h2>
+    <div class="s-rule"></div>
+    <div class="pkg-grid">
+      <div class="pkg">
+        <div class="pkg-label">Esencijalni</div>
+        <div class="pkg-price"><sub>KM</sub>400</div>
+        <div class="pkg-tagline">Savršen za manja vjenčanja</div>
+        <ul class="pkg-list">
+          <li>4 sata fotografisanja</li>
+          <li>200+ editovanih fotografija</li>
+          <li>Online galerija 12 mjeseci</li>
+          <li>Preuzimanje u punoj rezoluciji</li>
+          <li>1 fotograf</li>
         </ul>
-        <a href="#kontakt" class="btn btn-ol" style="width:100%;text-align:center;display:block;">Rezerviši →</a>
+        <a href="#kontakt" class="pkg-btn">Rezerviši →</a>
       </div>
-      <div class="pkg feat fi">
-        <div class="pbadge">Najpopularniji</div>
-        <div class="pname">Standard</div>
-        <div class="pprice">700 <span>KM</span></div>
-        <div class="pdesc">Idealan za prosječno vjenčanje – cijeli dan pokriven</div>
-        <ul class="pf">
-          <li><span class="fc">✦</span>8 sati fotografisanja</li>
-          <li><span class="fc">✦</span>500+ editovanih fotografija</li>
-          <li><span class="fc">✦</span>Online galerija 24 mjeseca</li>
-          <li><span class="fc">✦</span>Predvjenčano snimanje (1h)</li>
-          <li><span class="fc">✦</span>Isporuka 48h (prvih 50 slika)</li>
-          <li><span class="fc">✦</span>USB sa fotografijama</li>
-          <li><span class="fc">✦</span>1 fotograf + asistent</li>
+      <div class="pkg pop">
+        <div class="pop-tag">Najpopularniji</div>
+        <div class="pkg-label">Standard</div>
+        <div class="pkg-price"><sub>KM</sub>700</div>
+        <div class="pkg-tagline">Cijeli dan pokriven</div>
+        <ul class="pkg-list">
+          <li>8 sati fotografisanja</li>
+          <li>500+ editovanih fotografija</li>
+          <li>Online galerija 24 mjeseca</li>
+          <li>Predvjenčano snimanje (1h)</li>
+          <li>Isporuka 48h (prvih 50 slika)</li>
+          <li>USB sa fotografijama</li>
+          <li>1 fotograf + asistent</li>
         </ul>
-        <a href="#kontakt" class="btn btn-gd" style="width:100%;text-align:center;display:block;">Rezerviši →</a>
+        <a href="#kontakt" class="pkg-btn filled">Rezerviši →</a>
       </div>
-      <div class="pkg fi">
-        <div class="pname">Premium</div>
-        <div class="pprice">1200 <span>KM</span></div>
-        <div class="pdesc">Za parove koji žele potpuno iskustvo bez kompromisa</div>
-        <ul class="pf">
-          <li><span class="fc">✦</span>12 sati fotografisanja</li>
-          <li><span class="fc">✦</span>800+ editovanih fotografija</li>
-          <li><span class="fc">✦</span>Online galerija neograničeno</li>
-          <li><span class="fc">✦</span>Predvjenčano snimanje (2h)</li>
-          <li><span class="fc">✦</span>Fotoalbum 30×30 (30 stranica)</li>
-          <li><span class="fc">✦</span>Isporuka 48h (prvih 50 slika)</li>
-          <li><span class="fc">✦</span>Video highlights (3 min)</li>
-          <li><span class="fc">✦</span>2 fotografa</li>
+      <div class="pkg">
+        <div class="pkg-label">Premium</div>
+        <div class="pkg-price"><sub>KM</sub>1200</div>
+        <div class="pkg-tagline">Potpuno iskustvo bez kompromisa</div>
+        <ul class="pkg-list">
+          <li>12 sati fotografisanja</li>
+          <li>800+ editovanih fotografija</li>
+          <li>Online galerija neograničeno</li>
+          <li>Predvjenčano snimanje (2h)</li>
+          <li>Fotoalbum 30×30 (30 stranica)</li>
+          <li>Video highlights (3 min)</li>
+          <li>2 fotografa</li>
         </ul>
-        <a href="#kontakt" class="btn btn-dk" style="width:100%;text-align:center;display:block;">Rezerviši →</a>
+        <a href="#kontakt" class="pkg-btn">Rezerviši →</a>
       </div>
     </div>
-    <div class="fi" style="text-align:center;margin-top:26px;color:var(--tl);font-size:.85rem;font-style:italic;">
-      * Sve cijene su iskazane u KM i uključuju PDV. Za lokacije van Zenice (do 50 km) nema dodatnog troška.
+    <p class="pkg-note">* Sve cijene uključuju PDV. Lokacije do 50 km van Zenice — bez dodatnog troška.</p>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="process-section fade" id="proces">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="s-label">Saradnja</div>
+    <h2 class="s-title">Kako to<br><em>funkcionira</em></h2>
+    <div class="s-rule"></div>
+    <div class="process-steps">
+      <div class="process-steps::before"></div>
+      <div class="pstep"><div class="pstep-n">01</div><h3>Kontakt</h3><p>Besplatan razgovor o vašim željama i viziji vjenčanja.</p></div>
+      <div class="pstep"><div class="pstep-n">02</div><h3>Rezervacija</h3><p>Ugovor i mali avans osigurava vaš datum u kalendaru.</p></div>
+      <div class="pstep"><div class="pstep-n">03</div><h3>Pre-snimanje</h3><p>Upoznamo se i naviknete se na kameru pred veliki dan.</p></div>
+      <div class="pstep"><div class="pstep-n">04</div><h3>Vjenčanje</h3><p>Pratim svaki trenutak diskretno od jutra do kasnih sati.</p></div>
+      <div class="pstep"><div class="pstep-n">05</div><h3>Galerija</h3><p>Prva selekcija 48h. Kompletan set za 3–4 sedmice.</p></div>
     </div>
   </div>
 </section>
 
-<!-- PROCES -->
-<section class="section" id="proces">
-  <div class="container">
-    <div class="fi" style="text-align:center;max-width:580px;margin:0 auto 52px;">
-      <h2 class="stitle">Kako teče saradnja</h2>
-      <div class="div" style="margin:16px auto 0;"></div>
+<!-- TESTIMONIALS -->
+<section class="testi-section section fade" id="recenzije">
+  <div style="max-width:1100px;margin:0 auto">
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:24px;margin-bottom:0">
+      <div>
+        <div class="s-label">Recenzije</div>
+        <h2 class="s-title">Šta kažu<br><em>parovi</em></h2>
+        <div class="s-rule"></div>
+      </div>
+      <div class="testi-google">
+        <svg width="22" height="22" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
+        <div>
+          <div class="testi-google-rating">5.0 ★★★★★</div>
+          <div class="testi-google-count">48 Google recenzija</div>
+        </div>
+      </div>
     </div>
-    <div class="ps fi">
-      <div class="pst"><div class="psn">01</div><div class="pstitle">Kontakt i konsultacija</div><p class="psdesc">Besplatan razgovor o vašim željama i viziji vjenčanja.</p></div>
-      <div class="pst"><div class="psn">02</div><div class="pstitle">Rezervacija termina</div><p class="psdesc">Ugovor i mali avans osigurava vaš datum u kalendaru.</p></div>
-      <div class="pst"><div class="psn">03</div><div class="pstitle">Predvjenčano snimanje</div><p class="psdesc">Upoznamo se i vi se naviknete na kameru pred veliki dan.</p></div>
-      <div class="pst"><div class="psn">04</div><div class="pstitle">Dan vjenčanja</div><p class="psdesc">Pratim svaki trenutak diskretno od jutra do kasnih sati.</p></div>
-      <div class="pst"><div class="psn">05</div><div class="pstitle">Isporuka galerije</div><p class="psdesc">Prva selekcija 48h. Kompletan set za 3–4 sedmice.</p></div>
+    <div class="testi-grid">
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Nismo mogli zamisliti bolje. Fotografije su toliko prirodne i emotivne – svaka slika priča priču. Isporuka za 48 sati je bila nevjerovatna."</p><div class="tcard-author"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100" class="tcard-avatar" alt="Amra"/><div><div class="tcard-name">Amra & Edin H.</div><div class="tcard-date">Vjenčanje u Zenici, juni 2024.</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Jako profesionalan, diskretan i nenametljiv tokom cijelog vjenčanja. Bili smo opušteni i to se vidi na fotografijama. Preporučujem svim parovima!"</p><div class="tcard-author"><img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" class="tcard-avatar" alt="Lejla"/><div><div class="tcard-name">Lejla & Mirza K.</div><div class="tcard-date">Vjenčanje u Kaknju, august 2024.</div></div></div></div>
+      <div class="tcard"><div class="tcard-stars">★★★★★</div><p class="tcard-text">"Predvjenčano snimanje je bila izvrsna ideja. Navikli smo se na kameru i na dan vjenčanja smo se osjećali totalno opušteno. Album je hit kod nas doma!"</p><div class="tcard-author"><img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" class="tcard-avatar" alt="Sara"/><div><div class="tcard-name">Sara & Adnan B.</div><div class="tcard-date">Vjenčanje u Zenici, maj 2024.</div></div></div></div>
     </div>
   </div>
 </section>
 
-<!-- DOSTUPNOST -->
-<section class="section section-alt" id="dostupnost">
-  <div class="container">
-    <div class="fi" style="margin-bottom:48px;">
-      <h2 class="stitle">Provjeri dostupnost</h2>
-      <div class="div"></div>
-      <p class="ssub">Odaberi slobodan termin i rezerviši odmah</p>
-    </div>
-    <div class="aw">
-      <div class="fi">
-        <div class="cal">
-          <div class="cal-h">
-            <button class="cal-nav" id="cprev">&#8249;</button>
-            <h3 id="cmonth"></h3>
-            <button class="cal-nav" id="cnext">&#8250;</button>
-          </div>
-          <div class="cal-dh"><span>Ned</span><span>Pon</span><span>Uto</span><span>Sri</span><span>Čet</span><span>Pet</span><span>Sub</span></div>
-          <div class="cal-g" id="cg"></div>
-          <div class="cal-leg">
-            <span><span class="ld" style="background:var(--gold);"></span>Slobodan</span>
-            <span><span class="ld" style="background:#e55;"></span>Zauzet</span>
-          </div>
-        </div>
-      </div>
-      <div class="ai fi">
-        <h3>Brza rezervacija</h3>
-        <p>Odaberite datum u kalendaru i popunite kratku formu. Odgovor u roku od 2 sata.</p>
-        <div class="anote">⚡ Vikendi za 2025/2026 se brzo popunjavaju. Preporučujemo rezervaciju najmanje 6 mjeseci unaprijed.</div>
-        <div class="sdt" id="sdtxt">Niste odabrali datum →</div>
-        <div class="af">
-          <input type="text" id="an" placeholder="Ime i prezime *"/>
-          <input type="email" id="ae" placeholder="Email adresa *"/>
-          <input type="tel" id="ap" placeholder="Telefon / WhatsApp *"/>
-          <select id="apkg">
-            <option value="">-- Odaberite paket --</option>
-            <option>Esencijalni (400 KM)</option>
-            <option>Standard (700 KM)</option>
-            <option>Premium (1200 KM)</option>
-            <option>Nisam siguran/na</option>
-          </select>
-          <button class="btn btn-dk" style="width:100%;" onclick="subAvail()">Pošalji upit →</button>
-        </div>
-        <div class="fsuc" id="avok">✅ Upit je primljen! Javit ću se u roku od 2 sata.</div>
-      </div>
-    </div>
+<!-- AVAILABILITY -->
+<div class="avail-section" id="dostupnost">
+  <div class="avail-image">
+    <img src="https://images.pexels.com/photos/31049025/pexels-photo-31049025.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Vjenčanje u prirodi" loading="lazy"/>
   </div>
-</section>
-
-<!-- RECENZIJE -->
-<section class="section" id="recenzije">
-  <div class="container">
-    <div class="fi" style="text-align:center;max-width:580px;margin:0 auto 48px;">
-      <h2 class="stitle">Šta kažu parovi</h2>
-      <div class="div" style="margin:16px auto 0;"></div>
-      <p class="ssub" style="margin-top:12px;">Stvarna iskustva vjenčanih parova iz Zenice</p>
-    </div>
-    <div class="tg fi">
-      <div class="tc"><div class="qm">"</div><div class="stars">★★★★★</div><p class="tt">Nismo mogli zamisliti bolje. Fotografije su toliko prirodne i emotivne – svaka slika priča priču. Isporuka za 48 sati je bila nevjerovatna, odmah smo mogli podijeliti sa rodbinom.</p><div class="ta"><img src="https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=100" class="tav" alt="Amra H." loading="lazy"/><div><div class="tn">Amra & Edin H.</div><div class="td2">Vjenčanje u Zenici, juni 2024.</div></div></div></div>
-      <div class="tc"><div class="qm">"</div><div class="stars">★★★★★</div><p class="tt">Jako profesionalan, diskretan i nenametljiv tokom cijelog vjenčanja. Bili smo opušteni i to se vidi na fotografijama. Preporučujem svim parovima u Zenici i šire!</p><div class="ta"><img src="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=100" class="tav" alt="Lejla K." loading="lazy"/><div><div class="tn">Lejla & Mirza K.</div><div class="td2">Vjenčanje u Kaknju, august 2024.</div></div></div></div>
-      <div class="tc"><div class="qm">"</div><div class="stars">★★★★★</div><p class="tt">Predvjenčano snimanje je bila izvrsna ideja. Navikli smo se na kameru i na dan vjenčanja smo se osjećali totalno opušteno. Album je hit kod nas doma – svi ga gledaju!</p><div class="ta"><img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=100" class="tav" alt="Sara B." loading="lazy"/><div><div class="tn">Sara & Adnan B.</div><div class="td2">Vjenčanje u Zenici, maj 2024.</div></div></div></div>
-    </div>
-    <div class="fi" style="text-align:center;margin-top:40px;">
-      <div style="display:inline-flex;align-items:center;gap:12px;background:var(--lg);padding:16px 28px;border-radius:40px;border:1px solid var(--border);">
-        <svg width="24" height="24" viewBox="0 0 24 24"><path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/><path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/><path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/><path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/></svg>
-        <div><div style="font-size:1.1rem;">5.0 ★★★★★</div><div style="font-size:.78rem;color:var(--tl);font-family:'Helvetica Neue',Arial,sans-serif;">48 Google recenzija</div></div>
+  <div class="avail-form">
+    <h2>Provjeri <em>dostupnost</em></h2>
+    <p>Odaberite datum u kalendaru i popunite kratku formu. Odgovor u roku od 2 sata.</p>
+    <div class="avail-note">⚡ Vikendi za 2025/2026 se brzo popunjavaju. Preporučujemo rezervaciju najmanje 6 mjeseci unaprijed.</div>
+    <div class="cal">
+      <div class="cal-head">
+        <button class="cal-nb" id="cprev">‹</button>
+        <h3 id="cmonth"></h3>
+        <button class="cal-nb" id="cnext">›</button>
+      </div>
+      <div class="cdh"><span>Ned</span><span>Pon</span><span>Uto</span><span>Sri</span><span>Čet</span><span>Pet</span><span>Sub</span></div>
+      <div class="cdays" id="cg"></div>
+      <div class="cal-leg">
+        <span><span class="ldot" style="background:var(--rose)"></span>Slobodan</span>
+        <span><span class="ldot" style="background:rgba(247,243,236,.15)"></span>Zauzet</span>
       </div>
     </div>
+    <div class="sel-dt" id="sdtxt">→ Odaberite datum u kalendaru</div>
+    <input class="fi" type="text" id="an" placeholder="Ime i prezime *"/>
+    <input class="fi" type="email" id="ae" placeholder="Email adresa *"/>
+    <input class="fi" type="tel" id="ap" placeholder="Telefon / WhatsApp *"/>
+    <select class="fi" id="apkg">
+      <option value="">— Odaberite paket —</option>
+      <option>Esencijalni (400 KM)</option>
+      <option>Standard (700 KM)</option>
+      <option>Premium (1200 KM)</option>
+      <option>Nisam siguran/na</option>
+    </select>
+    <button class="sub-btn" onclick="subAvail()">Pošalji upit →</button>
+    <div class="form-ok" id="avok">✅ Upit je primljen! Javit ću se u roku od 2 sata.</div>
   </div>
-</section>
+</div>
 
-<!-- KONTAKT -->
-<section class="section section-alt" id="kontakt">
-  <div class="container">
-    <div class="fi" style="margin-bottom:48px;">
-      <h2 class="stitle">Kontaktirajte me</h2>
-      <div class="div"></div>
-      <p class="ssub">Besplatne konsultacije · Odgovor u roku 2 sata</p>
-    </div>
-    <div class="cg">
-      <div class="ci2 fi">
-        <h3>Razgovarajmo o vašem vjenčanju</h3>
-        <p style="color:var(--tm);font-style:italic;margin-bottom:26px;">Svako vjenčanje je posebno. Volim čuti o vašoj priči, planovima i željama kako bih mogao ponuditi ono što vam treba.</p>
-        <div class="cd2"><div class="cic">📞</div><div><div class="clbl">Telefon / WhatsApp</div><a href="tel:+38761000000">+387 61 000 000</a></div></div>
-        <div class="cd2"><div class="cic">✉️</div><div><div class="clbl">Email</div><a href="mailto:info@fotografzenica.ba">info@fotografzenica.ba</a></div></div>
-        <div class="cd2"><div class="cic">📍</div><div><div class="clbl">Lokacija</div><span style="color:var(--tm);">Zenica, Federacija BiH</span></div></div>
-        <div class="cd2"><div class="cic">🕐</div><div><div class="clbl">Radno vrijeme</div><span style="color:var(--tm);">Svaki dan 09:00 – 21:00</span></div></div>
-        <div style="margin-top:22px;padding:20px;background:#fff;border-radius:var(--r);border:1px solid var(--border);">
-          <p style="font-size:.87rem;color:var(--tm);margin-bottom:12px;font-style:italic;">Pratite moj rad na:</p>
-          <div style="display:flex;gap:10px;flex-wrap:wrap;">
-            <a href="#" style="background:var(--accent);color:#fff;padding:8px 18px;border-radius:var(--r);text-decoration:none;font-size:.82rem;font-family:'Helvetica Neue',Arial,sans-serif;">📷 Instagram</a>
-            <a href="#" style="background:#1877f2;color:#fff;padding:8px 18px;border-radius:var(--r);text-decoration:none;font-size:.82rem;font-family:'Helvetica Neue',Arial,sans-serif;">Facebook</a>
-          </div>
+<!-- CONTACT -->
+<section class="contact-section fade" id="kontakt">
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="s-label">Kontakt</div>
+        <h2>Razgovarajmo o vašem <em>posebnom danu</em></h2>
+        <div class="s-rule"></div>
+        <p style="color:var(--ink3);font-size:.9rem;line-height:1.85;margin-bottom:28px;font-style:italic">Svako vjenčanje je posebno. Volim čuti o vašoj priči, planovima i željama.</p>
+        <div class="contact-row"><div class="c-icon">📞</div><div><div class="c-lbl">Telefon / WhatsApp</div><div class="c-val"><a href="tel:+38761000000">+387 61 000 000</a></div></div></div>
+        <div class="contact-row"><div class="c-icon">✉️</div><div><div class="c-lbl">Email</div><div class="c-val"><a href="mailto:info@fotografzenica.ba">info@fotografzenica.ba</a></div></div></div>
+        <div class="contact-row"><div class="c-icon">📍</div><div><div class="c-lbl">Lokacija</div><div class="c-val">Zenica, Federacija BiH</div></div></div>
+        <div class="contact-row" style="border:none"><div class="c-icon">🕐</div><div><div class="c-lbl">Radno vrijeme</div><div class="c-val">Svaki dan 09:00 – 21:00</div></div></div>
+        <div class="social-links">
+          <a href="#" class="social-link">📷 Instagram</a>
+          <a href="#" class="social-link">Facebook</a>
         </div>
       </div>
-      <div class="fi">
-        <div style="background:#fff;padding:36px;border-radius:var(--r);border:1px solid var(--border);box-shadow:var(--s1);">
-          <h3 style="font-size:1.1rem;font-weight:normal;margin-bottom:22px;">Pošaljite upit</h3>
-          <div class="cf">
-            <div class="fr">
-              <input type="text" id="cfn" placeholder="Ime i prezime *"/>
-              <input type="tel" id="cfp" placeholder="Telefon *"/>
-            </div>
-            <input type="email" id="cfe" placeholder="Email adresa *"/>
-            <input type="date" id="cfd" title="Datum vjenčanja"/>
-            <select id="cfpkg">
-              <option value="">-- Odaberite paket --</option>
-              <option>Esencijalni (400 KM)</option><option>Standard (700 KM)</option>
-              <option>Premium (1200 KM)</option><option>Nisam siguran/na – trebam savjet</option>
-            </select>
-            <select id="cfl">
-              <option value="">-- Lokacija vjenčanja --</option>
-              <option>Zenica</option><option>Sarajevo</option><option>Kakanj</option>
-              <option>Visoko</option><option>Tešanj</option><option>Žepče</option>
-              <option>Maglaj</option><option>Zavidovići</option><option>Druga lokacija</option>
-            </select>
-            <textarea id="cfm" rows="4" placeholder="Recite mi nešto o vašem vjenčanju – stil, broj gostiju, posebne želje..."></textarea>
-            <button class="btn btn-dk" style="width:100%;font-size:1rem;padding:16px;" onclick="subContact()">Pošalji upit →</button>
-          </div>
-          <div class="fsuc" id="cfok">✅ Hvala! Primio sam vaš upit i javit ću se u roku od 2 sata.</div>
-          <p style="text-align:center;font-size:.77rem;color:var(--tl);margin-top:12px;font-style:italic;">Vaši podaci su sigurni i neće biti dijeljeni trećim stranama.</p>
+      <div class="contact-form">
+        <h3>Pošaljite upit</h3>
+        <div class="cf-row">
+          <input class="cf-inp" type="text" id="cfn" placeholder="Ime i prezime *"/>
+          <input class="cf-inp" type="tel" id="cfp" placeholder="Telefon *"/>
         </div>
+        <input class="cf-inp" type="email" id="cfe" placeholder="Email adresa *"/>
+        <input class="cf-inp" type="date" id="cfd" style="color-scheme:light"/>
+        <select class="cf-inp" id="cfpkg">
+          <option value="">— Odaberite paket —</option>
+          <option>Esencijalni (400 KM)</option>
+          <option>Standard (700 KM)</option>
+          <option>Premium (1200 KM)</option>
+          <option>Nisam siguran/na – trebam savjet</option>
+        </select>
+        <select class="cf-inp" id="cfl">
+          <option value="">— Lokacija vjenčanja —</option>
+          <option>Zenica</option><option>Sarajevo</option><option>Kakanj</option>
+          <option>Visoko</option><option>Tešanj</option><option>Žepče</option>
+          <option>Maglaj</option><option>Zavidovići</option><option>Druga lokacija</option>
+        </select>
+        <textarea class="cf-inp" id="cfm" rows="4" placeholder="Recite mi nešto o vašem vjenčanju..."></textarea>
+        <button class="cf-btn" onclick="subContact()">Pošalji upit →</button>
+        <div class="cf-ok" id="cfok">✅ Hvala! Primio sam vaš upit i javit ću se u roku od 2 sata.</div>
+        <p style="text-align:center;font-size:.7rem;color:var(--ink3);margin-top:12px;font-style:italic">Vaši podaci su sigurni i neće biti dijeljeni trećim stranama.</p>
       </div>
     </div>
   </div>
@@ -649,14 +1058,13 @@
 
 <!-- FOOTER -->
 <footer>
-  <div class="container">
-    <div class="fg">
-      <div class="fb">
-        <h3>FotoZenica</h3>
+  <div style="max-width:1100px;margin:0 auto">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#" class="logo">Foto<em>Zenica</em></a>
         <p>Profesionalno fotografisanje vjenčanja i posebnih događaja u Zenici i Bosni i Hercegovini. Vaši najljepši trenuci zaslužuju vječnost.</p>
-        <p style="margin-top:12px;color:rgba(255,255,255,.35);font-size:.79rem;">📍 Zenica, Federacija BiH</p>
       </div>
-      <div class="fcol">
+      <div class="footer-col">
         <h4>Usluge</h4>
         <a href="#portfolio">Fotografisanje vjenčanja</a>
         <a href="#portfolio">Predvjenčano snimanje</a>
@@ -665,7 +1073,7 @@
         <a href="#portfolio">Pejzaži i priroda</a>
         <a href="#cijene">Cijene paketa</a>
       </div>
-      <div class="fcol">
+      <div class="footer-col">
         <h4>Informacije</h4>
         <a href="#o-meni">O meni</a>
         <a href="#dostupnost">Dostupnost</a>
@@ -675,105 +1083,102 @@
         <a href="mailto:info@fotografzenica.ba">info@fotografzenica.ba</a>
       </div>
     </div>
-    <div class="fbot">
+    <div class="footer-bot">
       <span>© 2025 FotoZenica · Sva prava zadržana</span>
-      <span>Fotograf Zenica · Fotografisanje vjenčanja BiH · <a href="#pocetna">Nazad na vrh ↑</a></span>
+      <a href="#pocetna">Nazad na vrh ↑</a>
     </div>
   </div>
 </footer>
 
-<!-- STICKY MOBILE CTA -->
-<div class="scta"><a href="tel:+38761000000">📞 Pozovi odmah</a> &nbsp;|&nbsp; <a href="#kontakt">Rezerviši termin</a></div>
+<div class="mob-sticky"><a href="tel:+38761000000">📞 Pozovi odmah</a><a href="#kontakt">Rezerviši termin →</a></div>
 
 <!-- LIGHTBOX -->
 <div class="lb" id="lb">
-  <button class="lbx" onclick="lc()">✕</button>
-  <button class="lbp" onclick="ln(-1)">&#8249;</button>
-  <img class="lbi" id="lbi" src="" alt="FotoZenica – fotografija"/>
-  <button class="lbn" onclick="ln(1)">&#8250;</button>
-</div>
-
-<!-- CHAT -->
-<div class="cbbl">
-  <button class="cbtn" onclick="tc()" aria-label="Chat">
-    <svg id="cio" width="24" height="24" fill="none" stroke="#fff" stroke-width="2.2" viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-    <svg id="cic" width="20" height="20" fill="none" stroke="#fff" stroke-width="2.5" viewBox="0 0 24 24" style="display:none"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-    <div class="cdot"></div>
-  </button>
-  <div class="cwin" id="cwin">
-    <div class="cwh">
-      <div class="cwav">📷</div>
-      <div><div class="cwt">Fotograf Zenica</div><div class="cws">🟢 Online · Odgovor za ~2 min</div></div>
-      <button class="cwx" onclick="tc()">✕</button>
-    </div>
-    <div class="cms" id="cms"><div class="cm bot">Zdravo! 👋 Slobodno pitajte o cijenama, dostupnosti ili rezervaciji. Rado pomažem!</div></div>
-    <div class="cqr" id="cqr">
-      <button class="cqb" onclick="sq('Kakve su cijene?')">💰 Cijene</button>
-      <button class="cqb" onclick="sq('Dostupnost za moj datum?')">📅 Dostupnost</button>
-      <button class="cqb" onclick="sq('Kako rezervisati?')">✅ Rezervacija</button>
-      <button class="cqb" onclick="sq('Kada dobijam fotografije?')">⚡ Isporuka</button>
-    </div>
-    <div class="cir">
-      <input class="cinp" id="ci" placeholder="Napišite poruku..." onkeypress="ckp(event)"/>
-      <button class="csnd" onclick="sm()"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
-    </div>
-  </div>
+  <button class="lb-x" onclick="lbClose()">✕</button>
+  <button class="lb-pv" onclick="lbNav(-1)">‹</button>
+  <img id="lbimg" src="" alt="FotoZenica"/>
+  <button class="lb-nx" onclick="lbNav(1)">›</button>
 </div>
 
 <script>
-// Header
-window.addEventListener('scroll',()=>document.getElementById('hdr').classList.toggle('scrolled',scrollY>30));
-window.addEventListener('load',()=>document.getElementById('hbg-el').classList.add('loaded'));
+/* CURSOR */
+const cc=document.getElementById('cc'),cr2=document.getElementById('cr');
+let mx=0,my=0,rx=0,ry=0;
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cc.style.left=mx+'px';cc.style.top=my+'px'});
+setInterval(()=>{rx+=(mx-rx)*.13;ry+=(my-ry)*.13;cr2.style.left=rx+'px';cr2.style.top=ry+'px'},10);
+document.querySelectorAll('a,button,.film-item,.cday,.pkg').forEach(el=>{
+  el.addEventListener('mouseenter',()=>cr2.classList.add('big'));
+  el.addEventListener('mouseleave',()=>cr2.classList.remove('big'));
+});
 
-// Mobile nav
-document.getElementById('hbg').addEventListener('click',()=>document.getElementById('mnav').classList.toggle('open'));
-function closeMnav(){document.getElementById('mnav').classList.remove('open')}
+/* HERO IMG fade in */
+const hi=document.getElementById('heroimg');
+hi.onload=()=>hi.style.opacity='1';
+if(hi.complete)hi.style.opacity='1';
 
-// Scroll fade
-const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('vis')}),{threshold:.1});
-document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+/* NAV */
+const nav=document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('solid',scrollY>50));
 
-// Portfolio tabs
-function showTab(id,btn){
-  document.querySelectorAll('.pgal').forEach(g=>g.classList.remove('active'));
-  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('active'));
-  document.getElementById('t'+id).classList.add('active');
-  btn.classList.add('active');
+/* MOBILE NAV */
+const mnav=document.getElementById('mnav');
+document.getElementById('hbtn').addEventListener('click',()=>mnav.classList.toggle('on'));
+function closeMnav(){mnav.classList.remove('on')}
+
+/* FADE IN */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('in')}),{threshold:.07});
+document.querySelectorAll('.fade').forEach(el=>io.observe(el));
+
+/* FILMSTRIP DRAG */
+document.querySelectorAll('.filmstrip-wrap').forEach(wrap=>{
+  let isDown=false,startX,scrollLeft;
+  wrap.addEventListener('mousedown',e=>{isDown=true;startX=e.pageX-wrap.offsetLeft;scrollLeft=wrap.scrollLeft});
+  wrap.addEventListener('mouseleave',()=>isDown=false);
+  wrap.addEventListener('mouseup',()=>isDown=false);
+  wrap.addEventListener('mousemove',e=>{if(!isDown)return;e.preventDefault();const x=e.pageX-wrap.offsetLeft;wrap.scrollLeft=scrollLeft-(x-startX)*1.4});
+});
+
+/* GALLERY TABS */
+function showFilm(id,btn){
+  document.querySelectorAll('.filmstrip').forEach(f=>f.classList.remove('on'));
+  document.querySelectorAll('.ptab').forEach(b=>b.classList.remove('on'));
+  document.getElementById('f'+id).classList.add('on');
+  btn.classList.add('on');
 }
 
-// Lightbox
-let lbArr=[],lbI=0;
-function lo(el){
-  const tab=el.closest('.pgal');
-  lbArr=Array.from(tab.querySelectorAll('img')).map(i=>i.src.replace(/w=\d+/,'w=1400'));
-  lbI=Array.from(tab.querySelectorAll('.gi')).indexOf(el);
-  document.getElementById('lbi').src=lbArr[lbI];
-  document.getElementById('lb').classList.add('open');
+/* LIGHTBOX */
+let lbImgs=[],lbIdx=0;
+function openLb(el,fid){
+  const ft=document.getElementById(fid);
+  lbImgs=Array.from(ft.querySelectorAll('img')).map(i=>i.src.replace(/w=\d+/,'w=1600'));
+  lbIdx=Array.from(ft.querySelectorAll('.film-item')).indexOf(el);
+  document.getElementById('lbimg').src=lbImgs[lbIdx];
+  document.getElementById('lb').classList.add('on');
   document.body.style.overflow='hidden';
 }
-function lc(){document.getElementById('lb').classList.remove('open');document.body.style.overflow=''}
-function ln(d){lbI=(lbI+d+lbArr.length)%lbArr.length;document.getElementById('lbi').src=lbArr[lbI]}
-document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)lc()});
-document.addEventListener('keydown',e=>{if(e.key==='Escape')lc();if(e.key==='ArrowLeft')ln(-1);if(e.key==='ArrowRight')ln(1)});
+function lbClose(){document.getElementById('lb').classList.remove('on');document.body.style.overflow=''}
+function lbNav(d){lbIdx=(lbIdx+d+lbImgs.length)%lbImgs.length;document.getElementById('lbimg').src=lbImgs[lbIdx]}
+document.getElementById('lb').addEventListener('click',e=>{if(e.target===e.currentTarget)lbClose()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')lbClose();if(e.key==='ArrowLeft')lbNav(-1);if(e.key==='ArrowRight')lbNav(1)});
 
-// Calendar
-const BKDAYS=[5,12,19,26,8,22];
+/* CALENDAR */
+const BK=[5,12,19,26,8,22];
 const MN=['Januar','Februar','Mart','April','Maj','Juni','Juli','August','Septembar','Oktobar','Novembar','Decembar'];
 let cd=new Date(),sd=null;
 function renderCal(){
   const y=cd.getFullYear(),m=cd.getMonth();
   document.getElementById('cmonth').textContent=MN[m]+' '+y;
-  const g=document.getElementById('cg'); g.innerHTML='';
+  const g=document.getElementById('cg');g.innerHTML='';
   const fd=new Date(y,m,1).getDay(),dim=new Date(y,m+1,0).getDate(),tod=new Date();
-  for(let i=0;i<fd;i++){const e=document.createElement('div');e.className='cd';g.appendChild(e)}
+  for(let i=0;i<fd;i++)g.appendChild(Object.assign(document.createElement('div'),{className:'cday'}));
   for(let d=1;d<=dim;d++){
     const el=document.createElement('div');
-    const bk=BKDAYS.includes(d)&&m%2===0;
-    const isT=d===tod.getDate()&&m===tod.getMonth()&&y===tod.getFullYear();
+    const bk=BK.includes(d)&&m%2===0;
+    const iT=d===tod.getDate()&&m===tod.getMonth()&&y===tod.getFullYear();
     const iS=sd&&sd.getDate()===d&&sd.getMonth()===m&&sd.getFullYear()===y;
-    el.className='cd'+(bk?' bk':' av')+(isT?' today':'')+(iS?' sel':'');
+    el.className='cday'+(bk?' bkd':' free')+(iT?' tod':'')+(iS?' sel':'');
     el.textContent=d;
-    if(!bk)el.onclick=()=>{sd=new Date(y,m,d);document.getElementById('sdtxt').textContent='Odabrani datum: '+d+'. '+MN[m]+' '+y+'.';renderCal()};
+    if(!bk)el.onclick=()=>{sd=new Date(y,m,d);document.getElementById('sdtxt').textContent='→ Odabrano: '+d+'. '+MN[m]+' '+y+'.';renderCal()};
     g.appendChild(el);
   }
 }
@@ -781,7 +1186,7 @@ document.getElementById('cprev').onclick=()=>{cd.setMonth(cd.getMonth()-1);rende
 document.getElementById('cnext').onclick=()=>{cd.setMonth(cd.getMonth()+1);renderCal()};
 renderCal();
 
-// Forms
+/* FORMS */
 function subAvail(){
   if(!document.getElementById('an').value.trim()||!document.getElementById('ae').value.trim()||!document.getElementById('ap').value.trim()){alert('Molimo popunite sva polja.');return}
   document.getElementById('avok').style.display='block';
@@ -790,15 +1195,6 @@ function subContact(){
   if(!document.getElementById('cfn').value.trim()||!document.getElementById('cfp').value.trim()||!document.getElementById('cfe').value.trim()){alert('Molimo popunite sva obavezna polja.');return}
   document.getElementById('cfok').style.display='block';
 }
-
-// Chat
-const ANS={c:'Nudim 3 paketa:\n• Esencijalni – 400 KM (4h, 200+ foto)\n• Standard – 700 KM (8h, 500+ foto)\n• Premium – 1200 KM (12h, 800+ foto + album)',d:'Provjerite kalendar na stranici za dostupnost. Vikendi za 2025/2026 se brzo pune!',r:'Rezervacija: odaberite datum, potpišemo ugovor i mali avans osigurava vaš termin. Javite se! 😊',i:'Prvih 50 editovanih fotografija dobijate za 48 sati. Kompletan set za 3–4 sedmice.',x:'Hvala na pitanju!\n📞 +387 61 000 000\n✉️ info@fotografzenica.ba\n\nIli popunite kontakt formu. 😊'};
-function ga(msg){const m=msg.toLowerCase();if(m.includes('cijena')||m.includes('km')||m.includes('paket'))return ANS.c;if(m.includes('dostup')||m.includes('datum')||m.includes('termin'))return ANS.d;if(m.includes('rezerv'))return ANS.r;if(m.includes('isporuč')||m.includes('kada')||m.includes('foto'))return ANS.i;return ANS.x}
-let co=false;
-function tc(){co=!co;document.getElementById('cwin').classList.toggle('open',co);document.getElementById('cio').style.display=co?'none':'block';document.getElementById('cic').style.display=co?'block':'none'}
-function sq(t){document.getElementById('ci').value=t;sm()}
-function sm(){const ci=document.getElementById('ci');const msg=ci.value.trim();if(!msg)return;const m=document.getElementById('cms');m.innerHTML+=`<div class="cm usr">${msg}</div>`;ci.value='';document.getElementById('cqr').style.display='none';m.scrollTop=m.scrollHeight;setTimeout(()=>{m.innerHTML+=`<div class="cm bot">${ga(msg).replace(/\n/g,'<br>')}</div>`;m.scrollTop=m.scrollHeight},650)}
-function ckp(e){if(e.key==='Enter')sm()}
 </script>
 </body>
 </html>
